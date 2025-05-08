@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" content="#3367D6"/>
+  <link rel="apple-touch-icon" href="/icons-192.png">
+  <link rel="manifest" href="/manifest.json">
+  
+  <meta name="generator" content="Hexo 6.3.0">
+
+  
+
+  
+
+  
+    <meta name="author" content="Fox">
+  
+
+  
+
+  
+
+  <title>“计算机组成与体系结构” | 柒凪&#39;s blog</title>
+
+  
+
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+
+  <!--mathjax latex数学公式显示支持-->
+  
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@1.1.13/index.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/styles/monokai.min.css">
+  
+
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body>
+  <div class="root-container">
+    
+<!-- header container -->
+<header class="header-container post">
+  
+    <div class="post-image" style="background-image: url(https://qiniu.sukoshi.xyz/src/images/68686407_p0.jpg)"></div>
+  
+
+  <!-- navbar -->
+<nav class="navbar">
+  <div class="navbar-content">
+    <!-- logo -->
+    <div class="navbar-logo">
+      <a href="/">
+        
+          柒凪&#39;s blog
+        
+      </a>
+    </div>
+    <!-- link -->
+    <div class="navbar-link">
+      <div class="navbar-btn">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <ul class="navbar-list">
+        
+          <li class="navbar-list-item"><a href="/">首页</a></li>
+        
+          <li class="navbar-list-item"><a href="/links">友链</a></li>
+        
+          <li class="navbar-list-item"><a href="/about">关于</a></li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+    <div class="header-content">
+      <div class="post-text layout-block">
+        <div class="layout-margin">
+          <h1 class="title-wrap">“计算机组成与体系结构”</h1>
+          <h2 class="title-sub-wrap">
+            <strong>Fox</strong>
+            <span>发布于</span>
+            <time  class="article-date" datetime="2025-05-08T05:52:14.000Z" itemprop="datePublished">2025-05-08</time>
+          </h2>
+          
+          
+          <ul class="wrap-list dark">
+  
+</ul>
+          <ul class="wrap-list dark">
+  
+    <li><a href="/tags/%E8%AE%A1%E7%A7%9F/">🏷️ 计租</a></li>
+  
+</ul>
+        </div>
+      </div>
+    </div>
+  
+
+  
+  
+  
+</header>
+
+    <!-- 文章 -->
+
+<!-- 文章内容 -->
+<div class="body-container">
+  <article class="content-container layout-block post-container">
+    <div class="article-info">
+      
+      
+      
+      
+      <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
+        <h1 id="计算机组成与体系结构"><a href="#计算机组成与体系结构" class="headerlink" title="计算机组成与体系结构"></a>计算机组成与体系结构</h1><h2 id="计算机量化分析"><a href="#计算机量化分析" class="headerlink" title="计算机量化分析"></a>计算机量化分析</h2><h3 id="性能分析和度量"><a href="#性能分析和度量" class="headerlink" title="性能分析和度量"></a>性能分析和度量</h3><p>计算机快是指性能快，直观上，性能正比于执行时间的倒数</p>
+<p>执行时间（Execute Time）&#x3D; CPU时间 + 其它时间<br>CPU时间是CPU用于程序运行的真正时间<br>其他时间包括I&#x2F;O等待时间，运行操作系统时间，访存时间等<br>不特别指明时认为执行时间就是CPU时间</p>
+<p>CPU以时钟周期（Cycle）为单位执行指令<br>Clock cycle time（时钟周期） &#x3D; 1&#x2F; clock rate（时钟频率）</p>
+<p><strong>CPU性能公式</strong><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-03 18.08.09.png" alt="截屏2024-12-03 18.08.09" style="zoom:33%;"><br>IC (Instruction Count) 指令数目，指被CPU执行的指令数目，而不是静态程序大小<br>CPI (Clock Cycles per Instruction) 每条指令的时钟周期数<br>CT (Clock Cycle Time) 时钟周期</p>
+<img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-03 18.07.07.png" alt="截屏2024-12-03 18.07.07" style="zoom:33%;">
+n：某一个程序中指令的种类数目
+CPI<sub>i</sub>：指令i的CPI
+f<sub>i</sub>：指令i在程序中出现的频度
+对于单发射CPU，CPI一定不小于“1”
+多发射CPU通常使用IPC（1/CPI)来度量处理器的性能
+
+<p>减少IC的方法：算法、编程语言、编译技术、指令集体系结构（ISA）<br>减少CPI的方法（重点）：算法、编程语言、编译技术、ISA处理器微架构<br>减少时钟周期&#x2F;提高时钟频率的方法：处理器微架构芯片设计&#x2F;CMOS工艺<br>三个因素相互制约</p>
+<p><strong>每秒百万条指令（MIPS）</strong><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-03 18.15.23.png" alt="截屏2024-12-03 18.15.23" style="zoom: 33%;"><br>CPU时间＝指令数&#x2F; (MIPS×10<sup>6</sup> )</p>
+<p><em><strong>当不使用浮点硬件时，1次浮点操作由50个单周期指令完成。使用浮点硬件后，1次浮点操作只需要1个2周期指令。时钟频率不变（50MHZ）。1. CPI增加还是减少？2. IC增加还是减少？3. CPU时间增加还是减少？4. MIPS如何变化？为什么？</strong></em></p>
+<p><em><strong>CPI: 1 -&gt; 2	IC: 50 -&gt; 1	CPU Time: 50 -&gt; 2	MIPS: 50 -&gt; 25</strong></em></p>
+<p>MIPS的“陷阱”<br>使用MIPS度量性能存在三个问题：<br>没有考虑程序因素（指令数目）<br>同一台机器的不同程序有不同的MIPS，故常用来诠释峰值性能<br>MIPS可能与性能相反</p>
+<p>阿姆达尔定律：性能提升取决于不可优化部分的比例<br>计算机设计最重要和最普遍的原则就是：加快经常性发生事件的执行速度。<br>阿姆达尔定律表明：通过改进某模式得到的整体性能提高，受限于该改进模式所占的运行时间比例。</p>
+<p><strong>加速比</strong><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-03 18.29.23.png" alt="截屏2024-12-03 18.29.23" style="zoom:33%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-03 18.33.08.png" alt="截屏2024-12-03 18.33.08" style="zoom:33%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-03 18.36.38.png" alt="截屏2024-12-03 18.36.38" style="zoom:33%;"><br>s<sub>E</sub> -&gt; ∞  Speedup &#x3D; 1&#x2F;(1-f<sub>E</sub>)<br>f<sub>E</sub>  -&gt; 0  Speedup &#x3D; 1<br>f<sub>E</sub>  -&gt; 1  Speedup &#x3D; s<sub>E</sub><br>f<sub>E</sub>：增强比例	s<sub>E</sub>：增强加速比</p>
+<p><em><strong>浮点数平方根的操作在一个标准图形测试程序中占总执行时间的20%。一种方法是改进FPSQR硬件，将它的操作速度提高10倍。另一种方法是将所有图形处理器中的FP指令的执行速度都提高1.6倍，这些FP指令在总的执行时间中占50%这两种设计方法哪个更好?</strong></em><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/image-20241203185834085.png" alt="image-20241203185834085" style="zoom: 33%;"><br><em><strong>加速比：1.22&lt;1.23，第二种好</strong></em></p>
+<h3 id="功耗墙"><a href="#功耗墙" class="headerlink" title="功耗墙"></a>功耗墙</h3><p>cmos功耗：动态功耗和静态功耗</p>
+<p>动态功耗主要时钟翻转产生<br>动态功耗&#x3D;1&#x2F;2*负载电容*电压^2*开关频率<br>降低时钟频率（翻转率）可以降低动态功耗，但不一定能降低能耗</p>
+<p>静态功耗漏电流<br>静态功耗&#x3D;电流*电压<br>随着晶体管特征尺寸的减少，处理器内的漏电流持续增加</p>
+<p>降低电压：不太可能，静态功耗高<br>提高芯片冷却技术，增强散热能力：不太现实，成本太高</p>
+<p>多核处理器<br>单核处理器：假设性能正比于工作频率<br>功耗&#x3D;0.5*C*f*V^2<br>双核处理器：假设程序能够被完全并行<br>功耗&#x3D;0.5*2*C*K1*f*(K2*V)^2<br>K1&#x3D;0.5&#x3D;&gt;same performance<br>If K2&lt;1, power saving</p>
+<p>编写并行程序挖掘并行处理器性能<br>对比指令级并行技术</p>
+<h3 id="度量工具和基准测试程序"><a href="#度量工具和基准测试程序" class="headerlink" title="度量工具和基准测试程序"></a>度量工具和基准测试程序</h3><p>度量工具：硬件实现，模拟和仿真，分析模型和排队论，基本理论模型</p>
+<p>微结构仿真器，全系统仿真器<br>功能仿真器，时序（性能）仿真器<br>踪迹驱动，执行驱动</p>
+<p>基准测试程序定义：一组专门用于评估计算机设计及编译器性能的典型应用程序。<br>Standard Performance Evaluation Cooperative (SPEC)</p>
+<p>某个标准测试集有两个程序，P1和P2。对于机器A，P1和P2的执行时间是10s和120s。对于机器B，执行时间分别是2s和600s。哪个机器的性能更高?</p>
+<p>如何使用SPEC评估计算机性能?<br>程序在被测处理器上的运行时间归一化到参考处理器的运行时间之上 （被测试处理器相对于参考处理器的性能）<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-03 19.06.59.png" alt="截屏2024-12-03 19.06.59" style="zoom:33%;"></p>
+<p>spec得分：几何平均<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-03 19.07.43.png" alt="截屏2024-12-03 19.07.43" style="zoom:33%;"></p>
+<p>算数平均，调和平均，几何平均<br>当处理比率的平均值不能使用算术平均<br>使用算术平均计算Cache Miss，归一化的性能指标<br>使用调和平均计算CPI，MIPS或MFLOPS</p>
+<h2 id="指令——计算机的语言"><a href="#指令——计算机的语言" class="headerlink" title="指令——计算机的语言"></a>指令——计算机的语言</h2><h3 id="指令集体系结构（ISA）概述"><a href="#指令集体系结构（ISA）概述" class="headerlink" title="指令集体系结构（ISA）概述"></a>指令集体系结构（ISA）概述</h3><p>指令集体系结构（ISA，也称指令系统），是对处理器硬件细节的抽象描述，即设计规范（大白话：用户手册），定义了处理器能够做什么，也是系统级程序员所能看到的处理器的属性。</p>
+<p><strong>寄存器</strong><br>整数通用寄存器：应用程序员可见，用于存储整数。<br>浮点通用寄存器：应用程序员可见，用于存储浮点数。<br>专用特殊寄存器：应用程序员部分可见，仅用于专用指令或专用功能。<br>控制状态寄存器：系统程序员可见，用于控制指令执行的环境。</p>
+<p>堆栈型：又称零地址指令，其操作数都在栈顶，在运算指令中不需要指定操作数，默认对栈顶数据进行运算并将结果压回栈顶。<br>累加器型：又称单地址指令，包含一个隐含操作数—累加器，另一个操作数在指令中指定, 结果写回累加器中。<br>寄存器型：现代指令系统<br>    寄存器-存储器型：每个操作数都由指令显式指定，操作数为寄存器和内存单元。<br>    寄存器-寄存器型：每个操作数也由指令显式指定, 但除了访存指令外的其他指令的操作数都只能是寄存器，也称为load-store型。<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-03 21.03.18.png" alt="截屏2024-12-03 21.03.18" style="zoom:33%;"></p>
+<p>地址对齐：指对该数据的访问起始地址是其数据长度的整数倍。<br>大小端序：对于多字节数据的存储分为大端序和小端序。<br>小端序：低有效字节存放在低地址</p>
+<p><strong>寻址方式</strong><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-03 21.12.58.png" alt="截屏2024-12-03 21.12.58" style="zoom: 50%;"></p>
+<p>指令操作和编码<br>运算指令：包括数据移动、加减乘除、 移位、 逻辑运算等。<br>访存指令：负责对存储器进行读写。<br>转移指令：用于控制程序的流向。<br>    条件转移：判断条件再决定是否转移。<br>        通常只在转移指令附近进行跳转，偏移量一般不超过16位。<br>        条件判断两种方式：专用标志位（如x86）和直接比较寄存器（如MIPS32）。<br>    无条件转移：无须判断条件直接转移。转移地址：相对转移、绝对转移、直接转移和间接转移。<br>特殊指令：用于操作系统的特定用途。<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-03 21.14.27.png" alt="截屏2024-12-03 21.14.27" style="zoom: 40%;"></p>
+<h3 id="32位MIPS指令集体系结构"><a href="#32位MIPS指令集体系结构" class="headerlink" title="32位MIPS指令集体系结构"></a>32位MIPS指令集体系结构</h3><h4 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h4><p><strong>通用寄存器</strong><br>共计32个，每个通用寄存器为32位<br>32个通用寄存器均为程序员可见的寄存器<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-03 21.28.08.png" alt="截屏2024-12-03 21.28.08" style="zoom: 40%;"></p>
+<p><strong>专用寄存器</strong><br>共3个，用于存储乘&#x2F;除法结果的寄存器HI和LO，用于存放指令地址的PC寄存器<br>HI和LO寄存器对程序员可见；PC寄存器对程序员不可见，只能由硬件进行修改</p>
+<p>HI寄存器（乘除结果高位寄存器）和LO寄存器（乘除结果低位寄存器）<br>它们是乘除法专用寄存器，都是32位<br>对于乘法，HI寄存器保存乘法结果的高32位，LO寄存器保存乘法结果的低32位<br>对于除法，HI寄存器保存除法结果的余数部分，LO寄存器保存除法结果的商部分</p>
+<p>PC寄存器（程序计数器）<br>32位寄存器<br>对程序员不可见的，即无法通过指令显示的改变PC值，只能由处理器硬件自动更新</p>
+<p><strong>系统控制寄存器</strong><br>设置寄存器中的高16位，低16位清0<br>再使用后续指令设置低16位</p>
+<p>协处理器CP0<br>配置处理器的工作状态：通过读写其内部寄存器来改变CPU的特性，如大小端等<br>高速缓存控制：用于控制、读、写缓存<br>异常控制：完成异常发生时的检测和处理<br>存储管理单元的控制：对系统的存储区域进行控制、管理和分配，如MMU、TLB<br>其他：如时钟、时间计数器、奇偶校验错误检测等<br>共有32个32位系统控制寄存器</p>
+<h4 id="指令格式"><a href="#指令格式" class="headerlink" title="指令格式"></a>指令格式</h4><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-03 21.32.44.png" alt="截屏2024-12-03 21.32.44" style="zoom: 40%;">
+
+
+
+<img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-06 23.06.57.png" alt="截屏2024-12-06 23.06.57" style="zoom: 33%;">
+32位指令字被划分为4个字段
+op字段表示操作码
+rs字段为寄存器编号，表示一个源操作数来自于寄存器
+imm字段是一个16位立即数，表示另一个操作数，需要扩展至32位
+rt字段表示目的寄存器的编号，用于存放指令运行结果
+
+<img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-06 23.07.50.png" alt="截屏2024-12-06 23.07.50" style="zoom:33%;">
+32位指令字被划分为6个字段
+op字段表示操作码，通常为全0
+func字段与op字段一起决定指令的功能
+rs字段和rt字段为寄存器编号，表示两个源操作数来自于寄存器
+rd字段表示目的寄存器的编号
+sa字段只在移位指令中使用，表示移位位数，对于其它R-型指令sa字段为全0。
+
+<img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-06 23.08.41.png" alt="截屏2024-12-06 23.08.41" style="zoom:33%;">
+32位指令字被划分为2个字段
+op字段表示操作码，用于确定指令的类型
+instr_index字段用于产生跳转的目标地址
+
+<h4 id="指令集及汇编程序（自学）"><a href="#指令集及汇编程序（自学）" class="headerlink" title="指令集及汇编程序（自学）"></a>指令集及汇编程序（自学）</h4><p><strong>伪指令</strong><br>“.”开头的指令，辅助汇编进行<br>不生成目标代码，不影响程序执行</p>
+<p><strong>段定义伪指令</strong><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-07 15.15.36.png" alt="截屏2024-12-07 15.15.36" style="zoom: 33%;"></p>
+<p><strong>数据定义和对齐伪指令</strong><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-07 15.20.45.png" alt="截屏2024-12-07 15.20.45" style="zoom:33%;"><br>数据定义格式为 变量名：数据类型  变量值（多个变量值用“,”隔开）<br>数据类型主要为：整数类型，字符串类型</p>
+<p>整数类型：.byte，.half，.word，分别定义位宽为1，2，4字节的数据<br>字符串类型：.ascii，.asciiz，前者不包含结束符“\0”，后者会自动在所定义字符串结尾添加结束符“\0”</p>
+<p>连续存储空间定义<br>.space用于在存储器中分配n个连续字节的未赋值的空间</p>
+<p>数据对齐伪指令<br>方寸地址必须是1，2，4字节的整倍数<br>对齐伪指令：.align n，表示紧跟在其后的存储器地址以2<sup>n</sup>字节为对齐边界<br>注意：.align 0表示采用紧凑对齐方式</p>
+<p>实例<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-07 15.36.24.png" alt="截屏2024-12-07 15.36.24" style="zoom:33%;"><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-07 15.37.52.png" alt="截屏2024-12-07 15.37.52" style="zoom:30%;"></p>
+<p><strong>标签定义伪指令</strong><br>标签后会紧跟“:”，表示一片连续存储区域的首地址<br>标签在汇编指令中作为地址直接使用</p>
+<p>标签与重定位：重定位过程中将标签与具体地址进行绑定</p>
+<p>局部标签<br>只在定义它的程序模块内有效<br>在不同的程序模块中可以定义名称完全相同的局部标签<br>在基于MIPS指令的汇编程多中所有的标签默认都是局部的<br>定义格式为“name :其中name为标签名，后面紧跟一个“:”</p>
+<p>全局标签<br>全局标签是指那些在各个程序，模块中都有效的标签<br>如果在某个程序模块中定义了一个全局标签，那么在其他模块中也可使用这个标签<br>定义全局标签相关的伪指令有两条：.global和.extern<br>.global name(标签名)<br>如果引用一个在其他模块中定义的全局标签，则需要通过extern伪指令声明该标签<br>其格式为“.extern name”，name为标签名</p>
+<p>弱全局标签<br>弱全局标签是一种介于全局和局部之间的标签<br>对于被定义为弱全局的标签，如果在程序中存在与其同名的全局标签，则该标签被当作全局标签使用，否则，把它当作就局部标签来处理<br>弱全局标签定义的格式为“.weakext name”，name为标签名</p>
+<p><strong>汇编控制伪指令</strong><br>.set noreorder&#x2F;reorder(是否指令重排序)<br>当采用reorder选项时允许汇编器对指令重新排序，以获得更好的流水线性能<br>反之，在noreorder选项下，指令的顺序不会被改变也不会对代码进行任何优化</p>
+<p>.set volatile&#x2F;novolatile(访存指令是否可移动位置)<br>设置volatile选项时，其后所有访存指令都不会被移动位置<br>这一点对访问内存映射设备的寄存器非常重要。因为对于外围设备而言，对于寄存器(特别是状态寄存器)的读写顺序有着严格的要求。<br>对于novolatile选项，访存指令可能会依据指令特征做出顺序身上的调整。</p>
+<p>.set noat&#x2F;at(是否允许使用$at寄存器)<br>当设置at选项时，允许汇编器对宏指令使用$at($1)寄存器暂存中间结果，但如果源程序中使用$at寄存器，则产生警告信息。<br>对于选项noat，则汇编器使用$at寄存器时会产生警告信息，而源程序则可以自由使用而不被警告。</p>
+<p>.set nomacro&#x2F;macro(宏指令展开多条指令是否报警)<br>使用nomacro选项时，任何一条宏指令生成两条或两条以上机器指令时，系统会发出警告信息，通常与noreorder选项配合使用<br>若设置macro选项，无论每条宏指令生成多少机器指令，汇编器都不发出警告。</p>
+<p><strong>宏指令（合成指令）</strong><br>这些指令并不在MIPS指令集<br>每条宏指令的功能需要由多条MIPS指令完成，故也称为合成指令<br>简化编程，提高代码的可读性</p>
+<p>数据传送类<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-07 16.02.08.png" alt="截屏2024-12-07 16.02.08" style="zoom:33%;"></p>
+<p>移位类<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-07 16.05.21.png" alt="截屏2024-12-07 16.05.21" style="zoom:33%;"></p>
+<p>分支类<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-07 16.07.51.png" alt="截屏2024-12-07 16.07.51" style="zoom:33%;"></p>
+<p>其他<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-07 16.09.14.png" alt="截屏2024-12-07 16.09.14" style="zoom:33%;"></p>
+<h4 id="寻址方式"><a href="#寻址方式" class="headerlink" title="寻址方式"></a>寻址方式</h4><p><strong>立即数寻址</strong><br>I型指令提供了获取16位常数的方式<br>保证了指令的规整（均是32位），简化了硬件设计</p>
+<p>加载立即数高半字指令（LUI）<br>设置寄存器中的高16位，低16位清0，再使用后续指令设置低16位</p>
+<p><strong>寄存器寻址</strong></p>
+<p><strong>基址寻址</strong><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-06 23.11.36.png" alt="截屏2024-12-06 23.11.36" style="zoom:33%;"><br>rs字段为基址寄存器<br>offset字段为偏移量<br>二者相加得到访存地址</p>
+<p><strong>PC相对寻址（PC-relative addressing）</strong><br>目标地址 &#x3D; (PC + 4) + (offset &lt;&lt; 2)<br>可寻址范围：256KB，-128KB ～ +127KB</p>
+<p>主要用于分支指令<br>分支指令（I型指令）通常包括操作码、两个寄存器、转移目标地址<br>分支指令倾向于转移到附近的指令（if&#x2F;else结构、循环结构）<br>几乎所有循环和if语句的跳转距离都远远小于2<sup>16</sup>个字（SPEC 2006）</p>
+<p><strong>伪直接寻址（Pseudo Direct jump addressing）</strong><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-06 23.14.14.png" alt="截屏2024-12-06 23.14.14" style="zoom:33%;"><br>目标地址 &#x3D; (PC + 4)<sub>31…28</sub> || address &lt;&lt; 2（拼接，不是加）<br>可寻址范围：256MB，-128MB ～ +127MB</p>
+<p>主要用于跳转指令<br>跳转指令（j 和 jal）的目标地址可能是代码段中的任何位置<br>应在指令中尽可能多的分配地址位（提供长地址）</p>
+<p>远距离分支转移<br>分支转移目标的地址太远，超出了16位偏移所能表示的范围<br>解决办法：插入一条转移到分支目标地址的跳转指令，并将条件取反以便由分支指令决定是否跳过该跳转指令</p>
+<h3 id="高级语言的机器级表示"><a href="#高级语言的机器级表示" class="headerlink" title="高级语言的机器级表示"></a>高级语言的机器级表示</h3><h4 id="选择结构"><a href="#选择结构" class="headerlink" title="选择结构"></a>选择结构</h4><p><strong>if语句和if&#x2F;else语句</strong><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-07 21.35.22.png" alt="截屏2024-12-07 21.35.22" style="zoom:33%;"></p>
+<p><strong>switch&#x2F;case语句</strong><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-07 00.02.45.png" alt="截屏2024-12-07 00.02.45" style="zoom:33%;"><br>其本质就是一连串if&#x2F;else语句，可用于实现多路分支<br>但当需要判断的条件过多时，势必会影响程序的性能</p>
+<p>基于“跳转表”的switch&#x2F;case语句的机器级表示<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-07 00.03.43.png" alt="截屏2024-12-07 00.03.43" style="zoom:33%;"><br>通过跳转表，不用依次判断每个条件，显著提高switch&#x2F;case语句的条件判断效率<br>但当case的条件值相差较大时，如case10、case 100、case 1000等，采用跳转查找表势必浪费大量存储空间。因此，编译器仍然生成逐个进行条件判断的代码形式，而不会采用构造跳转表的方式来进行分支转移</p>
+<p>分支指令中没有blt，bge等指令，为什么？<br>硬件实现&lt;, ≥, … 比 &#x3D;, ≠慢，这类指令过于复杂，可能会延长时钟周期时间或增加CPI<br>指令beq和bne属于经常性事件，这是一种设计权衡</p>
+<h4 id="循环结构"><a href="#循环结构" class="headerlink" title="循环结构"></a>循环结构</h4><p><strong>while语句</strong><br>其本质仍然是分支语句<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-07 21.31.48.png" alt="截屏2024-12-07 21.31.48" style="zoom:25%;"></p>
+<p><strong>do…while语句</strong>	<br>与while几乎一样</p>
+<p><strong>for语句</strong><br>增加了一个循环变量，每次循环结束时更新循环变量<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-07 00.12.48.png" alt="截屏2024-12-07 00.12.48" style="zoom:33%;"></p>
+<h4 id="函数调用"><a href="#函数调用" class="headerlink" title="函数调用"></a>函数调用</h4><p>为了是增加程序的复用性和可读性，通常把程序划分为若干模块，每个模块完成一项特定任务，称为函数，也称为过程。</p>
+<p>分类<br>按照是否还调用其它函数可分为：非叶函数；叶函数<br>按照调用关系（例如函数A调用函数B）可分为：调用函数（caller），也就是函数A；被调用函数（callee），也就是函数B</p>
+<p><strong>现场</strong><br>被调函数在执行过程中，不能破坏调用函数的处理器状态，即通用寄存器的值。<br>为什么需要保护现场？所有函数共享一套通用寄存器<br>通用寄存器中的值称为现场。<br>如果被调函数的执行会破坏调用函数的现场，则需要将相应通用寄存器的值保存到存储器中，称为现场保护；<br>在返回时，需要重新从存储器将现场值取回通用寄存器，称为现场恢复。</p>
+<p><strong>调用流程</strong><br>调用函数A准备入口参数，并将其放在被调函数B可访问到的地方；<br>函数A将返回地址存放在特定地方（例如寄存器），然后转移到函数B；<br>函数B为函数A的现场和自己的局部变量分配存储空间（保护现场&#x2F;分配空间）；<br>执行函数B的函数体；函数B恢复函数A的现场，并销毁所有分配的存储空间；<br>B取出返回地址，转移到A继续执行</p>
+<p><strong>指令</strong><br>使用JAL指令进行函数调用，即把对程序的控制权从调用函数转移给被调函数<br>将返回地址保存到$ra寄存器（31号寄存器）<br>将程序计数器PC的值设置为被调函数的入口地址</p>
+<p>使用JR指令完成函数返回，从而将控制权从被调函数转移给调用函数<br>从$ra寄存器中取出返回地址，并送入程序计数器PC</p>
+<p>使用约定<br>如果入口参数的个数不多于4个，则使用通用寄存器$a0 ~ $a3从左向右传递参数列表中的参数<br>如果入口参数的个数大于4，则头4个参数仍然保存在寄存器$a0 ~ $a3中，其它多余的参数存入存储器。</p>
+<p>函数调用的返回结果保存在通用寄存器$v0和$v1中：<br>若返回值的位宽低于32位，则使用寄存器$v0保存返回结果<br>若返回值为双精度浮点型数据（64位），则使用寄存器$v0和$v1进行保存</p>
+<p>对于现场保护，MIPS规定由调用函数和被调函数共同协作完成<br>如果寄存器的值由调用函数保存到存储器中，则称之为调用函数保存寄存器（caller-save）<br>如果寄存器的值由被调用函数保存到存储器中，则称之为被调函数保存寄存器（callee-save）</p>
+<p>对于调用函数保存寄存器，被调函数可以直接使用它们，而不用将它们的值保存到存储器中。也就是说，如果调用函数在从被调函数返回后还要使用这些寄存器的话，需要在转移到被调函数前先保存它们的值，并在返回后先恢复它们的值再使用。<br>对于被调函数保存寄存器，被调函数需要先将它们的值保存到存储器中再使用，并在返回调用函数之前先恢复这些寄存器的值。<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-07 00.45.29.png" alt="截屏2024-12-07 00.45.29" style="zoom:33%;"></p>
+<p><strong>调用栈</strong><br>每调用一次函数，就会在栈中为其分配存储空间以保存相关信息<br>入口参数（多于4个）、需要保护的现场、非静态局部变量<br>存放某个程序正在运行的所有函数的信息的栈被称为调用栈<br>每个函数所对应的栈被称为栈帧（stack frame）</p>
+<p>栈是一个容量可动态变化的有储区域，按照后入先出(last-in-first-out, LIFO)的方式保存数据，其存储空间从高地址向低地址增长</p>
+<p>在MIPS ISA中，寄存器$sp（$29）为栈指针寄存器，指向当前栈中的最低可寻址单元，称为栈顶。寄存器$fp&#x2F;$s8（$30）为帧指针寄存器，指向栈底（由编译器决定其操作方式）。</p>
+<p>压栈(sw)：每次向栈中存入数据时，先将$sp的值减去一个偏移量，形成新的栈顶，再将数据保存到栈顶<br>出栈(lw)：每次从栈中读出数据，先读出位于栈顶的数据，然后将$sp的值加上一个偏移量，形成新的栈顶</p>
+<p>函数调用实例<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-07 00.49.56.png" alt="截屏2024-12-07 00.49.56" style="zoom: 40%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-07 00.50.46.png" alt="截屏2024-12-07 00.50.46" style="zoom: 33%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-07 00.51.19.png" alt="截屏2024-12-07 00.51.19" style="zoom: 33%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-07 00.52.20.png" alt="截屏2024-12-07 00.52.20" style="zoom: 33%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-07 00.52.41.png" alt="截屏2024-12-07 00.52.41" style="zoom: 33%;"></p>
+<p>递归函数调用实例<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-07 00.55.45.png" alt="截屏2024-12-07 00.55.45" style="zoom: 33%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-07 00.56.42.png" alt="截屏2024-12-07 00.56.42" style="zoom: 33%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-07 00.57.06.png" alt="截屏2024-12-07 00.57.06" style="zoom: 40%;"></p>
+<p>参数小于5个时，通过寄存器$a0 ~ $a3传递参数，但在当前栈帧中仍然为其保留空间；参数大于等于5个时，多出的通过栈传递<br>返回值保存在寄存器$v0中<br>通过指令JAL完成函数调用，同时将返回地址保存到$ra寄存器中<br>通过指令JR完成函数返回</p>
+<p>进入被调函数之后，完成如下准备工作：<br>形成新的栈帧（ addiu   $sp,   $sp,   -N ），N表示当前栈帧的大小<br>将帧指针$s8旧值压入栈中，以确保调用结束后可以恢复调用函数的栈底<br>如果被调函数不是叶函数，还需要将$ra寄存器的值压入栈中，以确保正确返回</p>
+<p>在函数调用返回之前，完成如下结束工作：<br>将帧指针$s8的旧值出栈，恢复调用函数的栈底<br>销毁当前栈帧（ addiu   $sp,   $sp,   N ），N表示当前栈帧的大小<br>如果被调用函数不是叶函数，还需要将返回地址出栈，存入寄存器$ra</p>
+<h4 id="数组和指针"><a href="#数组和指针" class="headerlink" title="数组和指针"></a>数组和指针</h4><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-07 01.09.02.png" alt="截屏2024-12-07 01.09.02" style="zoom: 33%;">
+无论哪个版本，乘法都由移位替代
+数组实现需要在内层循环中完成“乘（移位）”和加，指针版本直接递增指针，形成新的索引
+指针版本每次迭代的指令数更少（编译器优化）
+
+<p><strong>小测验</strong><br><em><strong>根据寄存器的重要性，芯片中寄存器数目随时间的增长率符合下面哪种情况？（B）</strong></em><br><em><strong>A.非常快：像摩尔定律一样快，每18个月翻一番</strong></em><br><em><strong>B.非常慢：由于程序是通过计算机语言实现的，而ISA具有惯性，因此寄存器数目的增长要与新指令集保持一致</strong></em></p>
+<p><em><strong>在MIPS中条件分支的地址范围是多大？（D）</strong></em><br><em><strong>A.地址在0-64K-1 之间</strong></em><br><em><strong>B.地址在0-256K-1 之间</strong></em><br><em><strong>C.分支前后地址范围各大约32K</strong></em><br><em><strong>D.分支前后地址范围各大约128K</strong></em></p>
+<p><em><strong>在MIPS中跳转指令的地址范围是多大？（F）</strong></em><br><em><strong>A.地址在0-64M-1之间</strong></em><br><em><strong>B.地址在0-256M-1之间分支前后</strong></em><br><em><strong>C.地址范围各大约32M分支前后</strong></em><br><em><strong>D.地址范围各大约128M</strong></em><br><em><strong>E.由PC提供高6位地址的64M大小的块中任意地址</strong></em><br><em><strong>F.由PC提供高4位地址的256M大小的块中任意地址</strong></em></p>
+<p><em><strong>假设$t0中存放数值0x00101000, 在执行下列指令后$t2的值是多少？（A）</strong></em><br>     <em><strong>slt  $t2, $0, $t0</strong></em><br>     <em><strong>bne $t2, $0, ELSE</strong></em><br>     <em><strong>j DONE</strong></em><br><em><strong>ELSE: addi $t2, $t2, 2</strong></em>	<br><em><strong>DONE :</strong></em><br><em><strong>A. 3          B. 0x00101002        C. 2              D. 0x00101000</strong></em></p>
+<p><em><strong>考虑如下的MIPS 循环：</strong></em><br><em><strong>LOOP: slt $t2, $0, $t1</strong></em><br>      <em><strong>beq $t2, $0, DONE</strong></em><br>      <em><strong>subi $t1, $t1, 1</strong></em><br>      <em><strong>addi $s2, $s2, 2</strong></em><br>      <em><strong>j LOOP</strong></em><br><em><strong>DONE:</strong></em><br><em><strong>1.假设寄存器$t1的初始值为10, 假设$s2初始值为0, 则最终寄存器$s2的值是多少？</strong></em><br><em><strong>2.写出等价的C代码。假定寄存器$s2, $t1和$t2分别为B 、i和temp 。</strong></em><br><em><strong>3.假定寄存器$t1的初始值为N, 上面的MIPS 汇编循环执行了多少条指令？</strong></em><br><em><strong>1.$s2 &#x3D; 20</strong></em>	<br><em><strong>2.i &#x3D; 10;</strong></em><br>   <em><strong>while (i &gt; 0) {</strong></em><br>       <em><strong>B +&#x3D; 2;</strong></em><br>       <em><strong>i &#x3D; i – 1;</strong></em><br>   <em><strong>}</strong></em></p>
+<p><strong><em>3. 5</em>N + 2</strong>*</p>
+<p><em><strong>根据下面的函数补全MIPS汇编语言。假设函数func的声明为”int func (int a, int b) ;”, 函数f 的代码如下：</strong></em><br><em><strong>int f( int a, int b, int c, int d ) {</strong></em><br>    <em><strong>return func ( func ( a, b ) ,c+d ) ;</strong></em><br><em><strong>}</strong></em><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-07 01.24.02.png" alt="截屏2024-12-07 01.24.02" style="zoom:33%;"></p>
+<p><strong>错误观念</strong><br>功能强大的指令 -&gt; 高性能<br>强大的指令使用频度往往较低<br>复杂指令实现难度大，容易形成整个处理器的性能瓶颈<br>复杂指令增加编译器设计难度（编译器擅长使用简单指令构建快速程序）</p>
+<p>汇编代码 -&gt; 高性能<br>现代编译器可以更好的发挥处理器的潜力<br>编写代码越多，造成错误的概率越大，越不利于维护</p>
+<p>向后兼容 -&gt; 不改变指令集<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-07 01.26.53.png" alt="截屏2024-12-07 01.26.53" style="zoom:33%;"></p>
+<p>MIPS ISA中的一些设计思想<br>简单源于规整，越小越快，优秀的设计需要好的折中，加速大概率事件，抽象<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-07 01.27.47.png" alt="截屏2024-12-07 01.27.47" style="zoom:33%;"></p>
+<h3 id="其他常见指令集体系结构"><a href="#其他常见指令集体系结构" class="headerlink" title="其他常见指令集体系结构"></a>其他常见指令集体系结构</h3><h2 id="处理器"><a href="#处理器" class="headerlink" title="处理器"></a>处理器</h2><h3 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h3><h3 id="流水线基本概念"><a href="#流水线基本概念" class="headerlink" title="流水线基本概念"></a>流水线基本概念</h3><p>把一条指令的处理过程拆分成若干阶段（简称为段或级，Stage），每个阶段由专门的硬件单元完成，多个硬件单元以时间重叠的方式并行处理多条指令（即不等一条指令处理完成就开始处理下一条指令），从而加快指令的执行效率。<br>两个关键词：拆分和并行</p>
+<p>指令流水线可以被划分为若干阶段，每个阶段由专门的硬件实现。同一时钟周期内，每个阶段并行处理多条不同的指令。<br>流水线技术并没有缩短一条指令的执行时间，而是提高了指令处理的吞吐率，使得单位时间内可完成更多的指令。<br>每个阶段的耗时应尽可能相等，避免产生瓶颈，影响流水线效率。<br>流水线需经过一段才能进入满负荷工作状态。如果指令不能连续执行，则会造成流水线暂停，再次形成满负荷还需要一段时间。因此，应尽量避免流水线的暂停，否则会严重降低流水线性能。</p>
+<h3 id="MiniMIPS32处理器的整体结构和设计方法"><a href="#MiniMIPS32处理器的整体结构和设计方法" class="headerlink" title="MiniMIPS32处理器的整体结构和设计方法"></a>MiniMIPS32处理器的整体结构和设计方法</h3><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-07 01.34.53.png" alt="截屏2024-12-07 01.34.53" style="zoom: 33%;">
+取指阶段（IF）：根据PC值从存储器取出指令，并确定下一条指令的地址，更新PC。
+译码阶段（ID）：进行指令译码，确定操作类型、源操作数来源以及目的操作数的去向。
+执行阶段（EXE）：根据译码阶段给出的信息进行运算，得到运算结果或访存地址。
+访存阶段（MEM）：对于访存指令，该阶段会访问存储器，以读出数据或写入数据。否则，只需将从执行阶段传递来的信息发送到写回阶段。同时，在该阶段还要判断是否有异常需要处理，如果有，则清除流水线，然后转移到异常处理程序入口继续执行。
+写回阶段（WB）：将指令运算的结果写入到目的寄存器。
+
+<p>采用32位五级整数流水线，不支持浮点运算<br>采用哈佛结构，具有独立的指令存储器和数据存储器<br>采用小端模式<br>支持MIPS Release 1中的56条指令和MIPS32中的ERET指令<br>支持硬除法器，指令都可在1个时钟周期内执行完成（不包括除法）<br>支持定向前推（旁路）、延迟转移和暂停等流水线处理机制<br>支持外部中断和精确异常处理</p>
+<p>围绕处理器所支持的指令，按数据通路和控制单元分别设计<br>MiniMIPS32处理器共支持57条指令，课上以其中的26条为例完成设计<br>指令也不是一次全部实现，而是结合流水线的设计步骤和特定问题，分阶段实现<br>经典五级流水线（理想状态，不存在任何指令相关），共实现16条指令<br>解决流水线的数据相关、控制相关，并引入暂停机制，共实现6条指令<br>增加协处理器CP0，实现精确异常处理（中断），共实现4条指令</p>
+<img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-07 01.37.34.png" alt="截屏2024-12-07 01.37.34" style="zoom: 33%;">
+<img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-07 01.38.11.png" alt="截屏2024-12-07 01.38.11" style="zoom: 33%;">
+
+<h3 id="经典五级流水线的设计与实现"><a href="#经典五级流水线的设计与实现" class="headerlink" title="经典五级流水线的设计与实现"></a>经典五级流水线的设计与实现</h3><p>设计并实现16条非转移类指令（转移指令在第2阶段实现）<br>非转移类R-型指令（8条）非转移类I-型指令（8条）</p>
+<p>第一步：设计面向非转移类R-型指令的流水线数据通路<br>第二步：对第一步的设计进行扩充，使数据通路支持非转移类I-型指令<br>第三步：完成控制单元的设计<br>第四部：采用硬件描述语言（HDL）对五级流水线进行编码实现</p>
+<p><strong>非转移类R-型指令</strong><br><strong>ALU运算指令（加&#x2F;减法、比较运算、逻辑运算），乘法指令，数据移动指令，移位指令</strong><br><strong>非转移类I-型指令</strong><br><strong>ALU运算指令（加&#x2F;减法、比较运算、逻辑运算），加载指令，存储指令</strong></p>
+<h4 id="非转移类R-型指令"><a href="#非转移类R-型指令" class="headerlink" title="非转移类R-型指令"></a>非转移类R-型指令</h4><p><strong>ALU运算指令（加&#x2F;减法、比较运算、逻辑运算）</strong><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-07 22.30.57.png" alt="截屏2024-12-07 22.30.57" style="zoom:33%;"></p>
+<p>存储器：异步读（组合逻辑实现），同步写：地址和数据位于同一周期，取指占1个周期<br>同步存储器：同步读（时序逻辑实现)，同步写：地址和数据相差一个周期，取指占2个周期，第一个周期送地址，第二个周期读数据<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-07 23.44.35.png" alt="截屏2024-12-07 23.44.35" style="zoom:50%;"></p>
+<p>以 AND $s0, $t0, $t1 为例<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 00.13.23.png" alt="截屏2024-12-08 00.13.23" style="zoom:40%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 00.25.45.png" alt="截屏2024-12-08 00.25.45" style="zoom:40%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 00.26.02.png" alt="截屏2024-12-08 00.26.02" style="zoom:40%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 00.26.24.png" alt="截屏2024-12-08 00.26.24" style="zoom:40%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 00.27.04.png" alt="截屏2024-12-08 00.27.04" style="zoom:40%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 00.27.53.png" alt="截屏2024-12-08 00.27.53" style="zoom:40%;"></p>
+<p>乘法指令<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-07 23.50.34.png" alt="截屏2024-12-07 23.50.34" style="zoom: 33%;"></p>
+<p>以 MULT $t0, $t1 为例<br>取指阶段：数据通路与之前的设计相同，不需要修改<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 00.28.34.png" alt="截屏2024-12-08 00.28.34" style="zoom:40%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 00.28.52.png" alt="截屏2024-12-08 00.28.52" style="zoom:40%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 00.29.19.png" alt="截屏2024-12-08 00.29.19" style="zoom:40%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 00.29.36.png" alt="截屏2024-12-08 00.29.36" style="zoom:40%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 00.29.55.png" alt="截屏2024-12-08 00.29.55" style="zoom:40%;"></p>
+<p><strong>数据移动指令</strong><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-07 23.53.41.png" alt="截屏2024-12-07 23.53.41" style="zoom: 33%;"></p>
+<p>以 MFLO $s0 为例<br>取指阶段：数据通路与之前的设计相同，不需要修改<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 00.30.22.png" alt="截屏2024-12-08 00.30.22" style="zoom:40%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 00.30.38.png" alt="截屏2024-12-08 00.30.38" style="zoom:40%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 00.31.02.png" alt="截屏2024-12-08 00.31.02" style="zoom:40%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 00.31.28.png" alt="截屏2024-12-08 00.31.28" style="zoom:40%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 00.32.03.png" alt="截屏2024-12-08 00.32.03" style="zoom:40%;"></p>
+<p><strong>移位指令</strong><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-07 23.59.35.png" alt="截屏2024-12-07 23.59.35" style="zoom: 33%;"></p>
+<p>以 SLL $s0, $t0, 5 为例<br>取指阶段：数据通路与之前的设计相同，不需要修改<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 00.33.26.png" alt="截屏2024-12-08 00.33.26" style="zoom:40%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 00.33.45.png" alt="截屏2024-12-08 00.33.45" style="zoom:40%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 10.16.29.png" alt="截屏2024-12-08 10.16.29" style="zoom:40%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 00.34.25.png" alt="截屏2024-12-08 00.34.25" style="zoom:40%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 00.34.43.png" alt="截屏2024-12-08 00.34.43" style="zoom:40%;"></p>
+<h4 id="非转移类I-型指令"><a href="#非转移类I-型指令" class="headerlink" title="非转移类I-型指令"></a>非转移类I-型指令</h4><p><strong>ALU运算指令（加&#x2F;减法、比较运算、逻辑运算）</strong><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 00.03.29.png" alt="截屏2024-12-08 00.03.29" style="zoom: 33%;"></p>
+<p>以 ORI $s0, $t0, 0x1234 为例<br>取指阶段：数据通路与之前的设计相同，不需要修改<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 00.35.35.png" alt="截屏2024-12-08 00.35.35" style="zoom:40%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 00.35.51.png" alt="截屏2024-12-08 00.35.51" style="zoom:40%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 00.36.08.png" alt="截屏2024-12-08 00.36.08" style="zoom:40%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 00.36.32.png" alt="截屏2024-12-08 00.36.32" style="zoom:40%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 00.36.51.png" alt="截屏2024-12-08 00.36.51" style="zoom:40%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 00.37.11.png" alt="截屏2024-12-08 00.37.11" style="zoom:40%;"></p>
+<p><strong>加载指令</strong><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 00.37.37.png" alt="截屏2024-12-08 00.37.37" style="zoom:33%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 00.42.30.png" alt="截屏2024-12-08 00.42.30" style="zoom:33%;"><br>访存地址由两部分组成：<br>基地址：指令字中的rs字段所确定的通用寄存器的值<br>偏移量：立即数字段符号扩展至32位的值<br>访存地址 &#x3D; 基地址 + 偏移量</p>
+<p>写字节使能信号WEN<br>位宽，N等于从端口din输入数据的字节数（对于MiniMIPS32，N &#x3D; 4）<br>WE的最高位对应输入数据最高有效字节<br>WE的最低位对应输入数据最低有效字节<br>如果WE为全0则表示当前进行的是读RAM操作<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 00.40.24.png" alt="截屏2024-12-08 00.40.24" style="zoom:33%;"></p>
+<p>以 LB $s0, 5($t0) 为例<br>取指阶段：数据通路与之前的设计相同，不需要修改<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 00.39.00.png" alt="截屏2024-12-08 00.39.00" style="zoom:40%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 00.39.16.png" alt="截屏2024-12-08 00.39.16" style="zoom:40%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 00.39.42.png" alt="截屏2024-12-08 00.39.42" style="zoom:40%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 00.40.47.png" alt="截屏2024-12-08 00.40.47" style="zoom:40%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 00.41.02.png" alt="截屏2024-12-08 00.41.02" style="zoom:40%;"></p>
+<p><strong>存储指令</strong><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 00.41.18.png" alt="截屏2024-12-08 00.41.18" style="zoom:33%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 00.43.10.png" alt="截屏2024-12-08 00.43.10" style="zoom:33%;"><br>访存地址由两部分组成：<br>基地址：指令字中的rs字段所确定的通用寄存器的值<br>偏移量：立即数字段符号扩展至32位的值<br>待存入存储器的数据来自指令字中rt字段所确定的寄存器</p>
+<p>以 SW $t1, 20($t0) 为例<br>取指阶段：数据通路与之前的设计相同，不需要修改<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 00.44.06.png" alt="截屏2024-12-08 00.44.06" style="zoom:40%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 00.44.37.png" alt="截屏2024-12-08 00.44.37" style="zoom:40%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 00.44.52.png" alt="截屏2024-12-08 00.44.52" style="zoom:40%;"><br>写回阶段：数据通路与之前的设计相同，不需要修改。<br>由于存储指令已在访存阶段将数据写入数据存储器，因此写回阶段不进行任何操作。<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 00.45.37.png" alt="截屏2024-12-08 00.45.37" style="zoom:40%;"></p>
+<p>经典五级流水线控制单元的设计<br>译码控制单元DCU：<br>以指令字中的操作码op字段和功能码func字段作为输入<br>生成寄存器使能信号、Mux选择信号、指令操作类型信号等控制信号<br>访存控制单元MCU：<br>以指令内部操作码aluop和访存地址maddr作为输入<br>生成数据存储器使能信号、写字节使能信号等访存控制信号</p>
+<p>译码控制单元（DCU）<br>第一级译码逻辑（组合逻辑电路）<br>对op字段和func字段译码 确定当前具体执行的是哪一条指令<br>第二级译码逻辑（组合逻辑电路）<br>对第一级的输出进一步译码 确定各种控制信号的具体取值<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 00.49.10.png" alt="截屏2024-12-08 00.49.10" style="zoom:40%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 00.49.44.png" alt="截屏2024-12-08 00.49.44" style="zoom:50%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 00.51.11.png" alt="截屏2024-12-08 00.51.11" style="zoom:33%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/image-20241208005209177.png" alt="image-20241208005209177" style="zoom:50%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/image-20241208005237792.png" alt="image-20241208005237792" style="zoom:50%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/image-20241208005247584.png" alt="image-20241208005247584" style="zoom:50%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/image-20241208005256942.png" alt="image-20241208005256942" style="zoom:50%;"></p>
+<p>访存控制单元（MCU）<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 00.53.21.png" alt="截屏2024-12-08 00.53.21" style="zoom:50%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 00.53.55.png" alt="截屏2024-12-08 00.53.55" style="zoom:50%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 00.54.43.png" alt="截屏2024-12-08 00.54.43" style="zoom:50%;"></p>
+<h3 id="指令相关（冒险）及解决办法"><a href="#指令相关（冒险）及解决办法" class="headerlink" title="指令相关（冒险）及解决办法"></a>指令相关（冒险）及解决办法</h3><p><strong>指令相关</strong><br>所谓“相关”是指在一段程序的邻近指令之间存在某种关系，这种关系造成流水线中的某些指令无法在指定的时钟周期被执行（冒险），影响指令在时间上的重叠执行，使得流水线吞吐率和加速比的下降，是制约流水线性能的重要原因之一。<br>流水线主要包含三种相关：结构相关（Structural Dependency）数据相关（Data Dependency）控制相关（Control Dependence）</p>
+<p><strong>结构相关</strong><br>是指流水线中多条指令在同一时钟周期内争用同一个功能部件，从而发生冲突，造成指令无法继续执行。<br>比如，数据和指令保存在同一存储器（冯诺依曼计算机结构）<br>消除结构相关常见的办法就是设置多个功能部件，比如设置两个存储器分别保存指令和数据，这就是哈佛结构，也是MiniMIPS32处理器所采用的结构。</p>
+<h4 id="数据相关"><a href="#数据相关" class="headerlink" title="数据相关"></a>数据相关</h4><p>是指在流水线中，如果某一条指令必须等前面指令的运行结果，才能继续执行，那么指令间就存在数据相关。<br>寄存器和数据存储器都存在数据相关<br>对于MiniMIPS32（单发射顺序CPU，数据存储器为单端口）而言，数据相关仅仅考虑寄存器中的数据。</p>
+<p><strong>分类（假设指令i先于指令j进入流水线）</strong><br>写后读相关（Read after Write，RAW）：指令j需要i的计算结果，但在流水线中，j可能在i写入结果前对保存该结果的寄存器进行读操作，从而读取错误的数据。<br>读后写相关（Write after Read，WAR）：指令j在指令i读取某个寄存器之前对该寄存器进行了写操作，导致指令i读取了已经进行了写操作的数据，从而发生错误。<br>写后写相关（Write after Write，WAW）：指令i和j对相同的寄存器进行写操作，如果在流水线中，指令j先于指令i完成了对寄存器的写操作，从而导致最终寄存器中存放的是指令i的结果，而不是指令j的结果，发生写入顺序的错误。</p>
+<img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 00.58.50.png" alt="截屏2024-12-08 00.58.50" style="zoom: 33%;">
+MiniMIPS32只考了RAW
+
+<p>通用处理器，HILO处理器都存在数据相关<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 01.00.13.png" alt="截屏2024-12-08 01.00.13" style="zoom:33%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 01.00.51.png" alt="截屏2024-12-08 01.00.51" style="zoom:34%;"></p>
+<p><strong>数据冒险的解决办法</strong><br>插入暂停周期，依靠编译器协助，数据转发（旁路）<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 01.02.56.png" alt="截屏2024-12-08 01.02.56" style="zoom:36%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 01.03.59.png" alt="截屏2024-12-08 01.03.59" style="zoom:37%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 01.04.17.png" alt="截屏2024-12-08 01.04.17" style="zoom:36%;"></p>
+<p>MiniMIPS32处理器的设计（支持数据转发）<br>任务一：判断当前指令是否与之前指令存在数据相关。<br>任务二：如果存在，则需要将流水线中尚未写回寄存器的数据定向前推至相关指令处，使得该指令获得正确数据。</p>
+<p>在何处判断是否存在数据相关？转发路径的起点和终点在哪里？<br>在需要获取操作数的地方判断，此时才能及时确定操作数的最新值<br>因此，相关性判断可在两个地方：1. 译码阶段源操作数的生成逻辑；2. ALU的数据输入处</p>
+<img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 01.09.03.png" alt="截屏2024-12-08 01.09.03" style="zoom:45%;">
+如果对于寄存器读端口1存在译码-执行相关，则满足条件：
+(exe2id_wreg == TRUE) && (exe2id_wa == rs) && (rs != 0)
+如果对于寄存器读端口2存在译码-执行相关，则满足条件：
+(exe2id_wreg == TRUE) && (exe2id_wa == rt) && (rt != 0)
+如果对于寄存器读端口1存在译码-访存相关，则满足条件：
+(mem2id_wreg == TRUE) && (mem2id_wa == rs) && (rs != 0)
+如果对于寄存器读端口2存在译码-访存相关，则满足条件：
+(mem2id_wreg == TRUE) && (mem2id_wa == rt) && (rt != 0)
+
+<p>对于译码-写回相关，可在寄存器堆的内部进行数据相关性判断。根据判断结果，决定是将寄存器中的值通过寄存器读数据端口rd1或rd2进行输出，还是将从写回阶段前推的数据通过寄存器读数据端口rd1或rd2进行输出。判断规则如下：<br>寄存器读端口1：(we &#x3D;&#x3D; TRUE) &amp;&amp; (wa &#x3D;&#x3D; rs) &amp;&amp; (rs !&#x3D; 0)<br>寄存器读端口2：(we &#x3D;&#x3D; TRUE) &amp;&amp; (wa &#x3D;&#x3D; rt) &amp;&amp; (rt !&#x3D; 0)<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 01.11.09.png" alt="截屏2024-12-08 01.11.09" style="zoom:40%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 01.11.43.png" alt="截屏2024-12-08 01.11.43" style="zoom:40%;"></p>
+<img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 01.12.37.png" alt="截屏2024-12-08 01.12.37" style="zoom:45%;">
+如果mem2exe_whilo==TRUE，即访存阶段指令要写HILO寄存器，
+则多路选择器选择从访存阶段定向前推的mem2exe_hilo作为HILO寄存器的最新值。
+如果wb2exe_whilo == TRUE，即写回阶段的指令要写HILO寄存器，
+则多路选择器选择从写回阶段定向前推的wb2exe_hilo作为HILO寄存器的最新值。
+如果(mem2exe_whilo == FLASE) && (wb2exe_whilo == FLASE)，即访存阶段和写回阶段的指令都不对HILO寄存器进行写操作，
+则多路选择器选择当前HILO寄存器的值作为最新值。
+
+<p>难点1：多组转发数据的选择<br>难点2：加载相关<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 01.14.04.png" alt="截屏2024-12-08 01.14.04" style="zoom:33%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 01.14.21.png" alt="截屏2024-12-08 01.14.21" style="zoom:37%;"></p>
+<h4 id="控制相关"><a href="#控制相关" class="headerlink" title="控制相关"></a>控制相关</h4><p>是一种由转移指令引起的相关。当执行转移指令时，依据对转移条件的判断，处理器可能会顺序取下一条指令（即PC &#x3D; PC + 4）；也可能会转移到新的目标地址取指令（即PC &#x3D; target_addr）。由于微处理器每个时钟周期都会顺序取出一条指令，则在转移发生之前，转移指令之后的若干条指令已经被取到流水线中。此时，如果发生转移，则将造成转移指令之后进入流水线的那些指令是不应该被执行的，从而使程序运行发生错误。<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 01.15.24.png" alt="截屏2024-12-08 01.15.24" style="zoom:37%;"></p>
+<p><strong>控制冒险的解决办法</strong><br>暂停&#x2F;排空流水线，译码阶段判断分支条件，延迟转移，分支预测<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 01.17.08.png" alt="截屏2024-12-08 01.17.08" style="zoom:37%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 01.17.34.png" alt="截屏2024-12-08 01.17.34" style="zoom:37%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 01.17.53.png" alt="截屏2024-12-08 01.17.53" style="zoom:37%;"><br>这是一种通过编译器辅助的流水线优化技术。<br>延迟转移规定转移指令（第i条）的后续一条指令（第i+1条）所在的位置称为“分支延迟槽”，简称“延迟槽（delay slot）”。编译器在进行指令调度的时候，选择某条指令位于延迟槽中，使得无论转移成功与否流水线都会执行这条指令。<br>这条位于延迟槽中的指令被称为“延迟指令”。</p>
+<p>延迟指令的选取<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 01.18.57.png" alt="截屏2024-12-08 01.18.57" style="zoom:40%;"></p>
+<p>分支延迟的优势和劣势<br>优势：简化硬件设计，只需确保在译码阶段确定分支方向即可<br>劣势：延迟指令不一定存在，不能保证有效消除控制相关的影响。<br>增加了编译器设计难度（选择什么指令作为分支延迟指令）。<br>流水线加深以及发射宽度的增加使得分支延迟变得更长。</p>
+<p>在流水线取指阶段提前猜测分支指令的分支方向。如果猜测正确，则流水线不会停顿，继续执行；否则，清空流水线（已取出的错误指令），从正确分支目标地址处执行。这种猜测分支方向的技术称为分支预测。</p>
+<p>静态分支预测：总预测分支未发生（或总预测分支发生）。平均命中率为50%，需要编译器的支持（软件）<br>动态分支预测：基于之前分支的历史信息来决定本次分支的方向。现代处理器普遍采用，命中率可达90%以上，分支预测器（硬件）</p>
+<p>基于1位计数器<br>当计数器为“1”时，则预测分支跳转；否则，预测分支不跳转。<br>根据指令上一次是否跳转来预测此刻是否跳转，即如果该指令上次发生了跳转，则预测这一次也会跳转；如果上一次没有发生跳转就预测这一次也不会跳转。<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 01.21.26.png" alt="截屏2024-12-08 01.21.26" style="zoom:33%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 01.23.44.png" alt="截屏2024-12-08 01.23.44" style="zoom:33%;"><br>预测条件变化过快（仅取决于上次预测结果)<br>对于分支方向改变不频繁的程序不适用<br>预测性能有时会低于静态分支预测器，特别是，对于一些极端情况造成预测准确度为0</p>
+<p>基于2位饱和计数器<br>预测状态信息从1位计数器增加到了2位计数器。<br>中间状态称为“弱状态”：01：弱不跳转，10：弱跳转<br>饱和状态称为“强状态”：00：强不跳转，11：强跳转<br>强状态需要2次预测错误才会改变方向弱状态只需要1次预测错误就改变方向<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 01.23.03.png" alt="截屏2024-12-08 01.23.03" style="zoom:33%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 01.24.23.png" alt="截屏2024-12-08 01.24.23" style="zoom:33%;"><br>基于2位饱和计数器基本就可以获得较高的预测准确率了，已被主流处理器广泛采用。<br>计数器宽度的增加会引起复杂度和成本的上升，而准确率提升有限。<br>基于2位饱和计数器的方法受初始状态影响比较大。<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 01.25.01.png" alt="截屏2024-12-08 01.25.01" style="zoom:33%;"></p>
+<p>分支历史表（BHT）<br>每一个PC都可以对应一个两位饱和计数器，但对于32位PC而言，共需要2Gb的存储空间（无法接受）。只选用k位的方法造成k部分相同的所有PC值使用同一个两位饱和计数器，相互造成干扰，称为别名。<img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 14.32.12.png" alt="截屏2024-12-08 14.32.12" style="zoom:33%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 14.33.21.png" alt="截屏2024-12-08 14.33.21" style="zoom:33%;"></p>
+<p>分支目标地址的预测<br>分支目标缓存（Branch Target Buffer，BTB）<br>位于取指（IF）阶段，用于预测分支目标地址<br>基于PC进行索引的Cache，可以与BHT合并<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 14.34.09.png" alt="截屏2024-12-08 14.34.09" style="zoom:33%;"></p>
+<p>训练BTB（“更新”）<br>在译码阶段获取了实际分支的情况后，对BTB进行更新<br>更新Valid位和Tag位<br>更新分支目标地址（必要的时候进行替换）<br>更新分支方向（BHT）</p>
+<p>使用BTB（“预测”）<br>在取指阶段利用当前的PC查询BTB<br>BTB命中：该指令是一条分支指令<br>根据BHT决定分支方向，如果预测为跳转，则从BTB中读出分支目标地址<br>BTB缺失：该指令不是分支指令或者预测为不跳转（顺序执行）<br>如果译码阶段确定预测失败，则清空取指阶段已取出的指令，再将PC设置为正确值并重新读指令。</p>
+<p>流水线数据通路设计（转移指令 + 分支延迟）<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 14.36.38.png" alt="截屏2024-12-08 14.36.38" style="zoom:33%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 14.37.22.png" alt="截屏2024-12-08 14.37.22" style="zoom:33%;"><br>默认汇编器处在reorder的模式下，该模式允许汇编器对指令进行重新排序，以避免流水线堵塞并获得更好的性能，在这种模式下，是不允许在代码中插入 nop指令的。反之，在noreorder模式下，指令的顺序不会被改变也不会对代码进行任何优化。</p>
+<p><strong>伪直接寻址：主要用于跳转指令J和JAL，可寻址范围：256MB，-128MB ～ +127MB</strong><br><strong>PC直接寻址：主要用于分支指令BEQ和BNE，可寻址范围：256KB，-128KB ～ +127KB</strong><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/image-20241208144829649.png" alt="image-20241208144829649" style="zoom:36%;"><img src="/Users/fanbowei/Library/Application Support/typora-user-images/image-20241208144841118.png" alt="image-20241208144841118" style="zoom:36%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 14.49.37.png" alt="截屏2024-12-08 14.49.37" style="zoom:40%;"></p>
+<p>控制单元设计（转移指令）<br>译码控制单元（DCU）<br>第一级译码逻辑（组合逻辑电路）<br>识别J、JAL、JR、BEQ和BNE指令<br>第二级译码逻辑（组合逻辑电路)<br>对新增输入信号，即相等使能信号equ<br>产生与转移指令相关的控制信号jal和jtsel<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 14.51.25.png" alt="截屏2024-12-08 14.51.25" style="zoom:40%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 14.54.37.png" alt="截屏2024-12-08 14.54.37" style="zoom:33%;"><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 14.54.59.png" alt="截屏2024-12-08 14.54.59" style="zoom:40%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 14.55.36.png" alt="截屏2024-12-08 14.55.36" style="zoom:40%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 14.53.42.png" alt="截屏2024-12-08 14.53.42" style="zoom:33%;"></p>
+<p>新增部分<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/image-20241208145621912.png" alt="image-20241208145621912" style="zoom:50%;"></p>
+<p>需修改的部分<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/image-20241208145710157.png" alt="image-20241208145710157" style="zoom:50%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/image-20241208145720796.png" alt="image-20241208145720796" style="zoom:50%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/image-20241208145728524.png" alt="image-20241208145728524" style="zoom:50%;"></p>
+<h4 id="流水线的暂停机制"><a href="#流水线的暂停机制" class="headerlink" title="流水线的暂停机制"></a>流水线的暂停机制</h4><p>流水线暂停的原因<br>对于一些特殊情况，为了保证程序执行的正确性，必须先暂时终止流水线的运行，等待相关指令执行完成，才可恢复流水线的运行。<br>对于MiniMIPS32处理器而言，造成其流水线暂停的原因有两个：多周期指令加载相关</p>
+<p>多周期指令<br>是指其需要花费多个时钟周期才能通过某个流水段。<br>在MiniMIPS32处理器中，当流水线满负荷工作后，大多数指令都可在1个时钟周期内执行完成，只有除法指令（DIV和DIVU）在执行阶段需要花费多个时钟周期。<br>因此，当除法指令到达执行阶段后，需要先暂停流水线，等待其执行完毕，否则后续进入流水线的指令会破坏除法指令的执行状态，导致错误的计算结果。</p>
+<p><strong>加载相关</strong><br>定向前推可以消除针对通用寄存器的RAW冒险，使流水线不停顿。<br>但该方法对于MiniMIPS32处理器有效必须满足一个前提条件：<br>就是待写入目的寄存器的数据必须可以在执行阶段计算出来<br>而对于加载指令，这个前提条件就无法满足了，因为加载指令要在写回阶段才能从数据存储器中获得待写入目的寄存器的值。<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 15.02.31.png" alt="截屏2024-12-08 15.02.31" style="zoom:40%;"></p>
+<p><strong>消除加载相关：暂停</strong><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 15.02.52.png" alt="截屏2024-12-08 15.02.52" style="zoom:40%;"></p>
+<p><strong>多周期除法指令DIV的设计</strong><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 15.06.12.png" alt="截屏2024-12-08 15.06.12" style="zoom:33%;"><br>采用试商法实现除法运算</p>
+<p>1位试商法<br>每个时钟周期选取被除数中的1位参与运算。<br>对于32位的除法，需要32个时钟周期才能得到除法的结果。</p>
+<p>假设被除数数为m，除数为n，商保存到s中，二进制被除数的位数为k，1位试商法的计算流程如下：<br>步骤1：取出被除数的最高位m[k - 1]，使用被除数的最高位减去除数n，如果结果大于等于0，则商s[k - 1]为1；反之为0。<br>步骤2：如果上一步的结果为0，表示当前的被减数（minuend）小于除数，则取出被除数剩下的值得最高位m[k - 2]，与当前被减数组合作为下一轮的被减数；如果上一步得出的结果是1，表示当前的被减数大于除数，则利用上一步中减法的结果与被除数剩下的值的最高位m[k - 2]组合作为下一轮的被减数。然后k减1。<br>步骤3：新的被减数减去除数，如果结果大于等于0，则商的s[k - 2]为1；否则为0。<br>重复步骤2和步骤3，直到k等于0。最终剩下的被减数就是余数。 </p>
+<p>2位试商法<br>每个时钟周期选取被除数中的2位参与运算。<br>对32位除法，需要16个时钟周期得到除法的结果（减少1半时间）。</p>
+<p>假设被除数数为m，除数为n，商保存到s中，二进制被除数的位数为k，2位试商法的计算流程如下：<br>步骤1：取出被除数的最高2位m[k – 1, k - 2]，使用m[k – 1, k - 2] 分别尝试减去除数n的i倍，i的取值可能为3、2和1。当i &#x3D; 3时，如果减法结果大于等于0，则商s[k – 1, k - 2]为11；否则，当i &#x3D; 2时，如果减法结果大于等于0，则商s[k – 1, k - 2]为10；否则，当i &#x3D; 1时，如果减法结果大于等于0，则商s[k – 1, k - 2]为01；否则，商s[k – 1, k - 2]为00。<br>步骤2：如果上一步的结果为00，表示当前的被减数小于除数，则取出被除数剩下的值得最高2位m[k-3, k-4]，与当前被减数组合作为下一轮的被减数；如果上一步得出的结果是11、10或01，表示当前的被减数大于除数，则利用上一步中减法的结果与被除数剩下的值的最高2位m[k – 3, k - 4]组合作为下一轮的被减数。然后k减2。<br>步骤3：新的被减数尝试分别减去除数n的i倍，i取值可能为3、2和1。当i &#x3D; 3时，如果减法结果大于等于0，则商s[k – 3, k - 4]为11；否则，当i &#x3D; 2时，如果减法结果大于等于0，则商s[k – 3, k - 4]为10；否则，当i &#x3D; 1时，如果减法结果大于等于0，则商s[k – 3, k - 4]为01；否则，商s[k – 3, k - 4]为00。<br>重复步骤2、3，直到k等于0。最终剩下的被减数就是余数。</p>
+<p>实例<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 15.09.59.png" alt="截屏2024-12-08 15.09.59" style="zoom:33%;"></p>
+<p>支持暂停机制的流水线的设计<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 15.11.21.png" alt="截屏2024-12-08 15.11.21" style="zoom:33%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 15.11.53.png" alt="截屏2024-12-08 15.11.53" style="zoom:40%;"></p>
+<p>如果当前处于执行阶段的指令是加载指令，并且与处于译码阶段指令存在数据相关，则这种数据相关属于加载相关<br>(exe2id_wreg&#x3D;&#x3D;TRUE) &amp;&amp; (rs&#x3D;&#x3D;exe2id_wa) &amp;&amp; (exe2id_mreg&#x3D;&#x3D;TRUE)<br>(exe2id_wreg&#x3D;&#x3D;TRUE) &amp;&amp; (rt&#x3D;&#x3D;exe2id_wa) &amp;&amp; (exe2id_mreg&#x3D;&#x3D;TRUE)<br>如果当前处于访存阶段的指令是加载指令，并且与处于译码阶段指令存在数据相关，则这种数据相关也属于加载相关<br>(exe2id_wreg&#x3D;&#x3D;TRUE) &amp;&amp; (rs&#x3D;&#x3D;exe2id_wa) &amp;&amp; (exe2id_mreg&#x3D;&#x3D;TRUE)<br>(exe2id_wreg&#x3D;&#x3D;TRUE) &amp;&amp; (rt&#x3D;&#x3D;exe2id_wa) &amp;&amp; (exe2id_mreg&#x3D;&#x3D;TRUE)</p>
+<img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 15.13.16.png" alt="截屏2024-12-08 15.13.16" style="zoom:33%;">
+各个流水线寄存器接收到暂停信号后，根据其前后两个阶段的暂停情况，确定流水线寄存器的值。
+例如，对于流水线寄存器idexe_reg，其取值会出现以下3种情况：
+如果译码阶段暂停(stall[2] == 1)，执行阶段不暂停(stall[3] == 0),则将空指令通过流水线寄存器idexe_reg从译码阶段传递给执行阶段。
+如果译码阶段不暂停(stall[2] == 0)，则将当前处于译码阶段的指令译码信息通过流水线寄存器idexe_reg传递给执行阶段。
+如果译码阶段暂停(stall[2] == 1)，执行阶段也暂停(stall[3] == 1)，则维持流水线寄存器idexe_reg的值不变。
+
+<p>![截屏2024-12-08 15.32.11](&#x2F;Users&#x2F;fanbowei&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;截屏2024-12-08 15.32.11.png)</p>
+<h3 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h3><p><strong>异常和中断</strong><br>程序在执行过程中，往往会出现一些事件打断程序的正常执行，使得处理器跳转到一个新的地址执行程序，这些事件被称为异常（Exception）或中断（Interrupt）。<br>异常来自CPU的内部（同步），比如做除法时除数为0。<br>中断来自CPU的外部（异步），比如键盘中断。<br>内部同步异常和外部异步异常，两者的处理流程是一样的。<br>MIPS指令集体系结构（包括MiniMIPS32）中统一称为异常。</p>
+<p><strong>分类</strong><br>指令执行中的错误：如不存在指令、除法除0、计算结果溢出、地址不对齐等等。<br>数据完整性问题：使用ECC等硬件校验方式的存储器发生校验错误时产生的异常。<br>地址转换异常：存储管理单元对一个内存页进行地址变换，而变换不成功的时候。<br>系统调用和陷入：由专用指令产生，用于调用内核模式的相关操作。<br>外部事件（中断）：键盘中断、鼠标中断、打印机中断等。</p>
+<img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 15.15.13.png" alt="截屏2024-12-08 15.15.13" style="zoom:33%;">
+异常处理准备（硬件）确保异常指令之前的所有指令都执行完，异常之后的指令清除，即精确异常
+关中断（硬件）
+保存断点（硬件）
+确定异常来源（硬件）处理器将不同异常进行编号，以便异常处理程序进行区分和跳转
+保存现场（软件）保存被打断程序的现场。现场指通用寄存器和状态寄存器
+执行异常处理程序（软件）跳转到对应的异常处理程序进行异常处理
+恢复现场（软件）
+开中断（软件）
+异常返回（硬件）
+
+<p>如何从主程序跳转到异常处理程序<br>查询方式 — — 软件查询<br>当异常发生时，CPU跳转到一个固定的地址（异常处理程序入口地址）<br>从入口地址开始软件查询到底发生了什么异常（MIPS CP0中Cause寄存器）<br>MIPS处理器（包括MiniMIPS32处理器）主要采用查询方式<br>向量方式（向量中断）— — 硬件查询<br>异常事件直接告知处理器引发异常的原因（即所谓的向量或异常号）<br>由这个向量直接生成异常处理程序的入口地址</p>
+<p>如何从异常处理程序返回主程序<br>在转向异常处理程序时，需要把返回地址保存起来<br>保存在通用寄存器中<br>保存在一个专门的寄存器中（MIPS CP0协处理器中的EPC）<br>保存到内存空间的栈中</p>
+<p>CP0协处理器概述</p>
+<p>CP0协处理器的设计思路</p>
+<p><strong>MiniMIPS32处理器中的异常处理</strong><br>精确异常<br>当一个异常发生，程序的正常执行被中断，对于基于流水线技术的处理器将会有若干条指令处于流水线的不同阶段。此时，处理器会转移到异常处理程序去执行，异常处理结束后返回原程序继续执行。因此希望对于发生异常的指令和它后面的指令，就好像什么都没有发生一样，这就被称为精确异常。<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 15.57.39.png" alt="截屏2024-12-08 15.57.39" style="zoom:40%;"></p>
+<p>按指令执行的顺序处理异常，而不是按异常发生的顺序处理异常。<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 15.58.20.png" alt="截屏2024-12-08 15.58.20" style="zoom:40%;"></p>
+<p>MiniMIPS32处理器中的异常优先级<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 15.59.32.png" alt="截屏2024-12-08 15.59.32" style="zoom:33%;"></p>
+<img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 16.17.27.png" alt="截屏2024-12-08 16.17.27" style="zoom:40%;">
+<img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 16.17.57.png" alt="截屏2024-12-08 16.17.57" style="zoom:40%;">
+
+<p>MiniMIPS32处理器的异常处理流程（硬件）<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 16.18.30.png" alt="截屏2024-12-08 16.18.30" style="zoom:50%;"><br>引入延迟槽之前：转移指令 ➡️ 转移目标地址指令<br>引入延迟槽之后：转移指令 ➡️ 延迟槽指令 ➡️ 转移目标地址指令<br>如果异常指令在延迟槽中，EPC保存延迟槽指令地址：延迟槽指令 ➡️ 延迟槽指令的下一条指令</p>
+<p>MiniMIPS32处理器的异常处理程序入口地址：0xBFC0_0380</p>
+<p>MiniMIPS32处理器的异常处理流程（软件）<br>保存被中断程序状态：如通用寄存器、CP0寄存器（EPC、Status）<br>区分不同的异常：通过Cause（ exccode ）判断发生了什么异常<br>执行异常处理程序<br>准备返回工作：恢复现场<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 16.25.40.png" alt="截屏2024-12-08 16.25.40" style="zoom:33%;"></p>
+<p>MiniMIPS32处理器的异常返回（硬件）<br>使用ERET指令实现异常返回，清除流水线上除写回阶段外的全部信息（无延迟槽指令）<br>ERET指令清除CP0协处理器中Status寄存器的EXL字段<br>将EPC寄存器保存的地址恢复到PC中，返回到异常发生处继续处理</p>
+<p><strong>异常相关指令</strong><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 16.28.01.png" alt="截屏2024-12-08 16.28.01" style="zoom:33%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 16.30.37.png" alt="截屏2024-12-08 16.30.37" style="zoom:33%;"></p>
+<p><strong>MiniMIPS32处理器异常处理的实现思路</strong><br>在流水线的各个阶段收集异常信息，并传递到访存阶段进行统一处理。<br>在取指阶段判断是否有取指地址错误异常ADEL在译码阶段判断是否有保留指令异常RI、系统调用异常Sys、断点异常Bp<br>在执行阶段判断是否有溢出异常Ov<br>在访存阶段判断是否有加载地址错误异常ADEL、存储地址错误异常ADES、外部中断Int<br>在访存阶段，结合CP0中相关寄存器判断异常是否需要处理，如果需要，则转移到对应的异常程序入口，清除流水线上除写回阶段外的全部信息。同时，修改CP0相关寄存器的值。<br>在执行ERET指令时，转移到EPC寄存器保存的返回地址，同时清除流水线上除写回阶段外的全部信息。<br>清除流水线某个阶段的信息，实际就是该阶段中所有寄存器设置为初始值即可。</p>
+<p>分阶段实现及关键点（以系统调用、溢出、断点、中断为例）<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 16.32.44.png" alt="截屏2024-12-08 16.32.44" style="zoom:40%;"></p>
+<h2 id="存储器层次结构"><a href="#存储器层次结构" class="headerlink" title="存储器层次结构"></a>存储器层次结构</h2><h3 id="存储层次"><a href="#存储层次" class="headerlink" title="存储层次"></a>存储层次</h3><h3 id="高速缓冲存储器（Cache）"><a href="#高速缓冲存储器（Cache）" class="headerlink" title="高速缓冲存储器（Cache）"></a>高速缓冲存储器（Cache）</h3><h4 id="Cache综述"><a href="#Cache综述" class="headerlink" title="Cache综述"></a>Cache综述</h4><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 19.06.41.png" alt="截屏2024-12-08 19.06.41" style="zoom:33%;">
+<img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 19.07.14.png" alt="截屏2024-12-08 19.07.14" style="zoom:40%;">
+<img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 19.07.45.png" alt="截屏2024-12-08 19.07.45" style="zoom:33%;">
+
+<p>Cache设计中的4个基本问题<br>“块”放置：一个“块”应该放置在Cache的什么位置？<br>“块”识别：如果“块”在Cache中，如何找到它？<br>“块”替换：当发生miss的时候，哪个“块”应该被替换？<br>写策略：对于写操作（hit or miss）应该如何处理？</p>
+<p><strong>Cache映射机制</strong><br>主存的容量远大于Cache容量<br>主存和Cache之间的基本交互单位是“块”<br>所有块的大小相同<br>多个主存块会共享Cache中的同一行（Cache line）</p>
+<p><strong>直接映射</strong><br>主存中的每个块只能放在Cache中唯一位置（行）<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 19.10.42.png" alt="截屏2024-12-08 19.10.42" style="zoom:33%;"><br>映射关系固定，查找速度快，硬件设计简单<br>多个主存块映射到统一cache行中，块冲突，可能造成较高的cache缺失率，降低性能</p>
+<p><strong>全相联映射</strong><br>主存中的每个块可放置在Cache中的任何位置（行）<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 19.11.14.png" alt="截屏2024-12-08 19.11.14" style="zoom:33%;"><br>cache中有空闲的行，就不会块冲突，cache缺失率较低<br>映射不固定，硬件实现更为复杂，查找速度满</p>
+<p><strong>N路组相联映射</strong><br>一个“组（set）”是若干块（行）的集合<br>主存和Cache中的组都具有同样大小（即组内块数相同）<br>“N路”指每个组中包含的块（行）的数目，也称为相联度<br>主存中的一个块首先被映射到Cache中的唯一一组中，然后该块可以放在这个组的任何一行中<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 19.17.29.png" alt="截屏2024-12-08 19.17.29" style="zoom:33%;"><br>组间直接相联，组内全相联</p>
+<p>直接相联结构简单，但冲突率最高；全相联结构复杂，但冲突率最低</p>
+<p>关联度越低，块冲突率越高，命中率越低。因此直接映射命中率最低，全相联映射命中率最高。<br>关联度越低，查找速度越快，判断是否命中的开销越小，命中时间越短。因此，直接映射的命中时间最短，全相联映射的命中时间最长。<br>关联度越低，硬件设计的复杂度和开销越少。因此，直接映射的硬件开销最少，全相联映射的硬件开销最大。</p>
+<p><strong>Cache查找方法</strong><br>三元组：&lt;Cache容量，块大小，相联度&gt;<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 19.28.15.png" alt="截屏2024-12-08 19.28.15" style="zoom:33%;"><br>V：有效位，指明是否该Cache行已经与一个主存块建立了映射关系<br>Tag：标记位，用于区分所有可能映射到该Cache行的多个主存块<br>Data：存放在该Cache行中的数据（数据量即块大小）</p>
+<img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 19.28.51.png" alt="截屏2024-12-08 19.28.51" style="zoom:40%;">
+
+
+
+<p><em><strong>假设Cache容量为1KB，块大小为16B，采用直接映射。直接映射相当于1-路组相联，</strong></em><br><em><strong>故该Cache的结构为&lt;1KB, 16B, 1&gt;，根据物理地址划分方法，可知，块内偏移offset占“b&#x3D; log<sub>2</sub>16&#x3D;4位”，</strong></em><br><em><strong>索引index（也就是Cache块号）占“q&#x3D; log<sub>2</sub>1KB&#x2F;(16B×1)&#x3D;6位”，标记tag占22位。</strong></em><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 19.32.59.png" alt="截屏2024-12-08 19.32.59" style="zoom:40%;"></p>
+<p><em><strong>假设Cache容量为1KB，块大小为16B，采用全相联映射，其结构为&lt;1KB, 16B, 64&gt;。</strong></em><br><em><strong>对于全相联，Cache中只有一组，故物理地址中不存在index字段。</strong></em><br><em><strong>地址划分如下，块内偏移offset占“b&#x3D; log<sub>2</sub>16&#x3D;4位”，标记tag占28位。</strong></em><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 19.35.56.png" alt="截屏2024-12-08 19.35.56" style="zoom:40%;"></p>
+<p><em><strong>假设Cache容量为1KB，块大小为16B，采用2-路组相联映射。该Cache的结构为&lt;1KB, 16B, 2&gt;，</strong></em><br><em><strong>根据物理地址划分方法，可知，块内偏移offset占“b&#x3D; log<sub>2</sub>16&#x3D;4位”，</strong></em><br><em><strong>索引index（也就是Cache组号）占“q&#x3D; log<sub>2</sub>1KB&#x2F;(16B×2)&#x3D;5位”，标记tag占23位。</strong></em><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 19.36.43.png" alt="截屏2024-12-08 19.36.43" style="zoom:40%;"></p>
+<p>Cache结构可通过三元组&lt;SIZE, ASSOC, BLOCKSIZE&gt;描述<br>SIZE：数据部分的总容量（总字节数）<br>ASSOC：相联度（组中的块数）<br>BLOCKSIZE：一块中所含的字节数<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 19.38.25.png" alt="截屏2024-12-08 19.38.25" style="zoom:33%;"></p>
+<p><strong>Cache替换策略</strong><br>直接相联Cache不需要替换策略<br>组相联和全相联Cache需要替换策略，常见策略包括：<br>随机替换（Random）先进先出（FIFO）近期最少使用（LRU，Least Recently Used）</p>
+<p><strong>LRU</strong><br>Cache组内的每行都设置一个计数器，其值越大，说明该行使用频度低<br>计数器位宽 &#x3D; log<sub>2</sub>(N-way)<br>如果Cache访问命中，将被引用行的计数器设置为“0”将计数值小于被引用行旧值的其他行的计数值递增“1”<br>如果Cache访问缺失，替换具有最大计数值的行，并设置新分配块的计数值为“0”组内其它所有行的计数值递增“1”</p>
+<p><em><strong>主存块A, B, C, D和E都被映射到同一组中，访存流（Memory Trace）：A B C D D D B D E</strong></em><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 19.45.28.png" alt="截屏2024-12-08 19.45.28" style="zoom:40%;"></p>
+<p>Cache替换算法都是硬件实现的<br>LRU是基于历史经验的替换策略，较准确地反映了程序的时间局部性<br>当相联度较大时（4路），LRU的实现代价大，可使用近似LRU替换策略<br>首先跟踪记录哪一对Cache行是近期最少使用的（使用1位引用位）<br>然后跟踪记录每对Cache中哪一行又是近期最少使用的（使用1位引用位）<br>对于更高的相联度，也可以采用随机替换策略：硬件易于实现，代价低；有时候，其性能好于（近似）LRU替换策略</p>
+<p><strong>Cache写策略</strong></p>
+<p>写命中</p>
+<p>写直达（WT, Write Through）<br>信息被同时写入Cache行和下一级存储的对应块中<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 19.48.14.png" alt="截屏2024-12-08 19.48.14" style="zoom:33%;"><br>写直通的优点：易于实现；读缺失处理简单，代价低，不需写回下一级存储；保持了数据一致性<br>写直通缺点：写操作速度慢对下一级存储（特别是主存）的访存压力大，带宽利用率低</p>
+<p>写回（WB, Write Back）<br>信息仅写入Cache行中，被改写的行只有被替换时才写回下一级存储的对应块中<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 19.48.45.png" alt="截屏2024-12-08 19.48.45" style="zoom:33%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 19.49.38.png" alt="截屏2024-12-08 19.49.38" style="zoom:50%;"><br>Cache每一行都对应一个“脏位”(D)：当某行被写时，其脏位置“1”<br>当一个脏行被替换时，需要将整个行写入下一级存储（“写回”)</p>
+<p>写回的优点：完成写操作（写单字）速度快；对同一Cache行的多次写操作只会引发对下一级存储的一次写操作；对下一次存储（特别是主存）的访存压力小，带宽利用率高<br>写回的缺点：实现代价高、破坏了数据一致性（coherence）</p>
+<p>写驱逐（WE, Write Evict）</p>
+<p>写不命中</p>
+<p>写分配（WA, Write Allocate）<br>发生写缺失后，将相应主存块调入到Cache中，再完成写操作<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 19.52.41.png" alt="截屏2024-12-08 19.52.41" style="zoom:33%;"></p>
+<p>写不分配（WN, Write-No-Allocate)<br>发生写缺失后，不调入主存块，直接更新主存<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 19.53.41.png" alt="截屏2024-12-08 19.53.41" style="zoom:33%;"></p>
+<p>通常，写分配与写回一起使用，称为写回写分配（WBWA）<br>通常，写不分配与写直达一起使用，称为写直达写不分配（WTWN）</p>
+<h4 id="Cache性能的量"><a href="#Cache性能的量" class="headerlink" title="Cache性能的量"></a>Cache性能的量</h4><p><strong>平均访存时间（AMAT）</strong><br>AMAT &#x3D; 总访存时间&#x2F;访存次数<br>总访存时间 &#x3D; (访存次数)×(命中时间)+(缺失次数)×(缺失代价)<br>AMAT &#x3D; 命中时间+缺失率×缺失代价<br>缺失率 &#x3D; 缺失次数&#x2F;访存次数<br>缺失率 —— Miss Rate<br>缺失代价 —— Miss Penalty</p>
+<p><em><strong>处理器时钟周期的时间为1ns，缺失率为1%，一级cache的访问时间为1个时钟周期，Cache行大小为64B。主存访问延迟为100ns，主存带宽为8GB&#x2F;s。假设读操作和写操作的缺失代价相同，请计算AMAT 。</strong></em><br><em><strong>AMAT &#x3D; 命中时间+缺失率×缺失代价</strong></em><br><em><strong>缺失代价 &#x3D; 主存访问延迟+块大小&#x2F;主存带宽 &#x3D; 100ns+64B&#x2F;8B&#x2F;ns &#x3D; 108ns</strong></em><br><em><strong>AMAT &#x3D; 1+0.01×108 &#x3D; 2.08ns</strong></em></p>
+<p><strong>执行时间</strong><br>由两部分组成：CPU执行程序的时间和访存阻塞的时间<br>Execution time &#x3D; CPU execution time + Memory stall time<br>             &#x3D; (CPU execution cycles + Memory stall cycles) × CT<br>Cache命中时间包含在CPU执行程序的时间之内</p>
+<img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 20.00.45.png" alt="截屏2024-12-08 20.00.45" style="zoom:40%;">
+<img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 20.01.02.png" alt="截屏2024-12-08 20.01.02" style="zoom:40%;">
+
+<p>CPI越小(CPU性能越好)，Cache缺失时钟周期数对执行时间影响越高<br>通常，Cache的缺失代价是按CPU的时钟周期统计的，所以主频越高的CPU发生Cache缺失时占用更多的时钟周期数<br>对于高性能CPU，Cache的设计对于机器整体性能的影响至关重要</p>
+<p><em><strong>假设指令Cache的缺失率为2%，数据Cache的缺失率为4%, 处理器没有发生任何访存阻塞时的CPI为2，每次缺失的代价为100 个时钟周期，那么配置理想Cache（不发生缺失）的处理器的加速比是多少？假定load和store两条指令的出现频率为36% 。</strong></em><br><em><strong>通过改进流水线，在不改变时钟频率的情况下，将CPI从2降到1，访存阻塞占总执行时间的比例如何变化？加速比如何变化？</strong></em><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 20.02.54.png" alt="截屏2024-12-08 20.02.54" style="zoom:40%;"></p>
+<p><em><strong>结论：处理器性能得到改善，但存储器系统性能不改善，反而会加剧性能损失（Amdal定律）</strong></em></p>
+<p><em><strong>请计算两种不同cache组织形式对于处理器性能的影响是多少？假定处理器的CPI是1.6，时钟周期为0.35ns，每条指令有1.4次存储器引用。两个缓存的容量和块大小都相同，一个cache是直接相联，另一个是2路组相联。因为处理器速度与cache命中的速度直接相关，所以对于组相联cache，时钟周期为1.35倍。Cache访问缺失的代价是65ns。首先计算存储器的平均访问时间，然后计算处理器性能。假设命中时间为1个时钟周期，直接映射的缺失率为2.1%，2路组相联缺失率为1.9%。</strong></em><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 20.07.13.png" alt="截屏2024-12-08 20.07.13" style="zoom:40%;"></p>
+<p><em><strong>结论：有时大容量或高相联度Cache命中时间的增加反而会抵消命中率的改进所起的作用，从而导致处理器性能的下降</strong></em></p>
+<h4 id="Cache性能的优化"><a href="#Cache性能的优化" class="headerlink" title="Cache性能的优化"></a>Cache性能的优化</h4><p>AMAT &#x3D; 命中时间 + 缺失率 × 缺失代价<br>降低AMAT?<br>降低命中时间，降低缺失率，降低缺失代价<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 20.09.22.png" alt="截屏2024-12-08 20.09.22" style="zoom:33%;"></p>
+<p><strong>3C模型</strong><br>用于描述三种类型的Cache缺失，由三类名称的英文首字母构成<br>强制缺失（Compulsory）：也称冷启动缺失，对Cache行的首次引用导致的缺失<br>容量缺失（Capacity）：采用全相联结构也不能容纳所有请求的块所导致的缺失<br>冲突缺失（Conflict）：也称碰撞缺失，很多块竞争同一组导致的缺失，并且这种缺失在使用相同大小的全相联Cache中不存在</p>
+<p><em><strong>假设某直接相联cache，容量是32B，块大小是8B。对下列访存地址流，识别前8次访问中所出现的缺失的类型是什么？</strong></em><br><em><strong>Trace：A，A+8，A+32，A，A+16，A+24，A+40，A+8 . . . . . .</strong></em><br><em><strong>访存地址A对应Cache中第0行</strong></em><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 20.11.18.png" alt="截屏2024-12-08 20.11.18" style="zoom:33%;"><br><em><strong>冲突缺失：在组相联Cache中缺失，但同样容量的全相联Cache中不缺失</strong></em><br><em><strong>容量缺失：在组相联Cache中缺失，在同样容量的全相联Cache中也缺失</strong></em></p>
+<h5 id="降低缺失率"><a href="#降低缺失率" class="headerlink" title="降低缺失率"></a>降低缺失率</h5><p><strong>调整Cache结构</strong><br>更大的块<br>核心思想：利用空间局部性<br>强制缺失减少	#. compulsory &#x3D; (working set) &#x2F; (block size)<br>可能导致更多的冲突缺失（cache thrashing）<br>增加了缺失代价	#.transfers &#x3D; (block size) &#x2F; (bus width)</p>
+<p>更大容量<br>优势：容纳更多数据，可减少容量缺失甚至冲突缺失<br>劣势：增加了命中时间（基本事实：存储器容量越大，访存越慢）<br>产生“收益递减”现象，双倍容量并不意味这双倍性能<br>更高的实现成本和功耗损失，不适用于片上Cache</p>
+<p>更大相联度<br>优势：降低了冲突缺失<br>在Cache容量相同前提下，相联度越高，缺失率越低<br>劣势：增加了命中时间（相比直接相联）<br>也会产生“收益递减”现象，通常4路组相联接近全相联<br>增加了功耗损失</p>
+<p>Cache结构参数对缺失率的影响<br>Cache容量：在一定程度上，越大越好，更低的容量缺失，更低的冲突缺失<br>相联度：高相联度降低了冲突缺失<br>当相联度超过8，其所带来的缺失率收益微乎其微<br>块大小：越大的块挖掘了越多的空间局部性<br>通常当块大小在64B~256B范围内变化时，可带来缺失率的改善<br>超过512B，则可能导致缺失率的增加（更高的冲突缺失）</p>
+<p><strong>Victim Cache</strong><br>“牺牲块”Cache：L1 Cache旁放置的小容量、全相联Cache<br>一般可放置3~16个Cache行<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 20.17.37.png" alt="截屏2024-12-08 20.17.37" style="zoom:33%;"></p>
+<p>Victim Cache（VC）的工作方式：<br>当L1 Cache驱逐（替换）一个块（“受害块”）时，VC则保存该块<br>当L1 Cache缺失，从VC搜索最近被驱逐的块<br>如果VC命中表示L1 Cache不需要访问下一级存储，直接从VC中获取相应块<br>否则，VC不命中，则访问下一级存储</p>
+<p><em><strong>Victim Cache具有两行，开始时保存块X和Y，其中Y是LRU块</strong></em><br><em><strong>L1 Cache采用直接相联，块A和B映射到同一组中</strong></em><br><em><strong>Trace：A   B   A   B   A   B. . . .</strong></em><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 20.18.43.png" alt="截屏2024-12-08 20.18.43" style="zoom:33%;"><br><em><strong>B在L1 Cache中缺失，驱逐A，则A被分配到VC并替换LRU块“Y”</strong></em><br><em><strong>X成为新的LRU块</strong></em><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 20.19.07.png" alt="截屏2024-12-08 20.19.07" style="zoom:33%;"><br><em><strong>A在L1 Cache中缺失，但在VC中命中，则交换A和B的位置</strong></em><br><em><strong>VC命中时，LRU块不被替换</strong></em><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 20.19.33.png" alt="截屏2024-12-08 20.19.33" style="zoom:33%;"></p>
+<p>Victim Cache提供了一种组相联的“错觉”<br>一个“简易版”的组相联<br>针对直接相联存在严重冲突问题的解决方案<br>有时甚至只有1行，对缺失率也会产生很大的改善</p>
+<p><strong>编译器优化</strong><br>改善空间局部性<br>将数据项彼此靠近摆放，使得能够被及时访问<br>改善时间局部性<br>变换计算过程以增加数据项在被替换前的使用次数</p>
+<p>指令布局<br>思路：如果取指令A之后再取B，可将A和B放在同一块中（空间局部性）<br>对于指令Cache<br>绝大多数指令顺序执行，因此满足上述思路<br>转移指令改变了顺序访问模式，解决方案：<br>测试每种分支跳转&#x2F;不跳转的发生频率<br>构建控制流图（CFG）<br>寻找每个指令组后续可能执行的指令组<br>按照最大可能的顺序执行方式重组指令组布局</p>
+<p>数据布局</p>
+<p>循环交换</p>
+<p>循环融合</p>
+<p>分块</p>
+<p><strong>预取机制</strong><br>提前将主存块装入Cache，非按需缓存（on-demand Caching）<br>通过提升未来访问Cache的命中率来隐藏访存延迟<br>时效性：被预取的主存块正好在被访问前装入Cache<br>触发性：何时触发预取操作（Cache缺失、特殊预取指令等）<br>存放在Cache中<br>存放在专门的预取缓存（prefetch buffers）中</p>
+<p>硬件预取<br>基本实现思路<br>位于Cache旁的自动硬件预取器<br>预测哪些主存块在将来会被访问<br>提前预取这些将来会被访问的主存块</p>
+<p>顺序预取器，简称为OBL（one-block lookahead）<br>Cache访问缺失时，除了读取缺失块，还预取与其相邻的下一块（prefetch on miss）<br>对于具有顺序性的数据流（streams）具有很好的预取效果，比如指令流<br>优势：充分利用了两次缺失间的空闲存储带宽<br>缺陷：不能很好满足时效性</p>
+<p>步幅预取器（stride prefetchers）<br>观察数据访问的步幅规律，从而确定预取的主存块<br>例如stride &#x3D; n，则说明访问步幅为n blocks，预取第“block+n”块<br>顺序预取器是步幅为1（stride &#x3D; 1）的预取器</p>
+<p>软件预取——编译制导预取<br>编译器评估&#x2F;预测哪些访存请求将发生缺失<br>在恰当的位置插入“预取指令”来避免访存缺失<br>预取不会减少Cache缺失代价，只是将缺失前移，利用计算隐藏代价</p>
+<p><strong>预取的量化评价标准</strong><br>准确率（Accuracy）&#x3D; 有效的预取次数&#x2F;发起的预取次数<br>覆盖率（Coverage） &#x3D; 有效的预取次数&#x2F;关闭预取导致的缺失次数<br>时效性（Timeliness）：用于判断预取发生的是否太早或太晚<br>太早将造成一些有用的数据从Cache中被替换，导致这些数据需要重新加载<br>太晚将造成当需要访问这些预取数据的时候，它们还未被预取完毕</p>
+<p>预取存在的问题<br>Cache污染<br>不准确的预取将带入无用块，从而替换了有用的块<br>预取的前提是不能增加缺失率<br>解决方案：将预取块送入一个“缓存”，当程序访问时，再将其调入主Cache<br>带宽占用<br>不准确的预取会造成访存带宽的浪费<br>预取访存流（prefetch miss）不能造成正常访存流（demand miss）的延迟<br>解决方案：相比预取访存流，要给予正常访存流更高的优先级</p>
+<h5 id="降低缺失代价"><a href="#降低缺失代价" class="headerlink" title="降低缺失代价"></a><strong>降低缺失代价</strong></h5><p><strong>多级Cache</strong><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 20.29.28.png" alt="截屏2024-12-08 20.29.28" style="zoom:33%;"></p>
+<p>多级Cache的平均访问时间（以2级为例）<br>AMAT &#x3D; 命中时间L1 + 缺失率L1 × 缺失代价L1<br>缺失代价L1 &#x3D; 命中时间L2 + 缺失率L2 × 缺失代价L2<br>AMAT &#x3D; 命中时间L1 + 缺失率L1 × (命中时间L2 + 缺失率L2 × 缺失代价L2)</p>
+<p>局部（本地）缺失率：缺失率L1、缺失率L2<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/image-20241208203029234.png" alt="image-20241208203029234" style="zoom:50%;"></p>
+<p>全局缺失率：缺失率L1 × 缺失率L2<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/image-20241208203046699.png" alt="image-20241208203046699" style="zoom:50%;"></p>
+<p>一般情况，L2 cache的局部缺失率比较大（为什么？）<br>全局缺失率表示最终到达主存的访存操作的比例</p>
+<p><em><strong>假定处理器在完美Cache情况下的CPI为1.0，时钟频率为4GHz。假设主存访问时间为100ns，其中包括缺失处理时间。设L1 Cache中每条指令缺失率为2%。如果增加一个L2 Cache，L1 Cache的命中或缺失访问的时间都是5ns，而且L2 Cache的容量大到使全局缺失率减少到0.5%，这时的处理器速率能提高多少（加速比）？</strong></em><br><em><strong>主存的缺失代价 &#x3D; 100ns &#x2F; 0.25ns &#x3D; 400个时钟周期</strong></em><br><em><strong>只有L1 Cache时，CPI &#x3D; 1 + 每条指令的访存阻塞时钟周期 &#x3D; 1 + 2% × 400 &#x3D; 9</strong></em><br><em><strong>访问L2 Cache缺失代价 &#x3D; 5ns &#x2F; 0.25ns &#x3D; 20个时钟周期</strong></em><br><em><strong>两级Cache，CPI &#x3D; 1 + L1 Cache中每条指令的阻塞 + L2 Cache中每条指令的阻塞 &#x3D; 1 + 2% × 20 + 0.5% × 400 &#x3D; 3.4</strong></em><br><em><strong>Speedup &#x3D; 9 &#x2F; 3.4 &#x3D; 2.6</strong></em></p>
+<p>多级Cache的分类<br>包含式Cache（Inclusive Cache）<br>L1中的数据一定包含在L2中，反之不一定成立，即L2是L1的超集<br>独占式Cache（Exclusive Cache）<br>L1和L2中的数据不重叠</p>
+<p>假设L1和L2中块大小相同，L1采用写回策略；<br>a, a’和b表示L1的Cache行，A, A’和B表示L2中与之对应的Cache行，L1和L2均采用LRU替换策略<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 20.44.55.png" alt="截屏2024-12-08 20.44.55" style="zoom:67%;"><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 20.45.34.png" alt="截屏2024-12-08 20.45.34" style="zoom:66.5%;"></p>
+<p>如果CPU发出了使Cache Line无效的请求<br>首先检测该行是否在L2 Cache中，如果不在，也就无需再检查L1 Cache<br>如果在L2 Cache中，则还需检查该行是否在L1 Cache<br>性能受到一定损失<br>L2 Cache的每行设置一个包含位（Inclusion Bit，I位）<br>该位如果有效，则说明L1 Cache中存在L2 Cache相应行的副本，需要将其置为无效<br>该位如果无效（这种情况居多，因为L2 &gt;&gt; L1），则无需再检查L1 Cache<br>Side-effect：如果L1 Cache中的某行被替换，即使它是“干净”的，也需要将L2 Cache中相应行的I位置为无效<br>假设L2的块大小是B2，L1的块大小是B1，B2是B1的整倍数<br>L2中的I位需占用B2&#x2F;B1位；如果L2中某行被替换，则L1中将有多行被置为无效</p>
+<p>L1 Cache的设计致力于减少命中时间，获得更高的工作频率<br>L1 Cache容量、块大小和相联度都比较小<br>L2 Cache的设计致力于改善缺失率和缺失代价<br>L2 Cache容量、块大小和相联度都比较大</p>
+<p><strong>写缓存</strong><br>写缓存是一个FIFO<br>通常写缓存中有4-8项（每项需要包含哪些信息？）<br>当写操作不频繁时写缓存效果较好<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 20.36.32.png" alt="截屏2024-12-08 20.36.32" style="zoom:33%;"></p>
+<p>WTNA中的写缓存<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 20.47.43.png" alt="截屏2024-12-08 20.47.43" style="zoom:33%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 20.47.56.png" alt="截屏2024-12-08 20.47.56" style="zoom:33%;"></p>
+<p>WBWA中的写缓存<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 20.48.51.png" alt="截屏2024-12-08 20.48.51" style="zoom:33%;"><br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 20.49.01.png" alt="截屏2024-12-08 20.49.01" style="zoom:33%;"></p>
+<p>写缺失后紧跟着读缺失<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 20.49.28.png" alt="截屏2024-12-08 20.49.28" style="zoom:33%;"></p>
+<p>解决方案<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 20.50.15.png" alt="截屏2024-12-08 20.50.15" style="zoom:33%;"><br>对于WTNA Cache而言<br>方案1：读缺失一直等待直到写缓存清空（实现简单、性能差）<br>方案2：读缺失检查写缓存，如果没有冲突，则继续；否则等待直到写操作完成<br>方案3：从下级请求所需的块，然后和写数据合并，写操作仍然保存在写缓存中，直到它被写入下一级（实现复杂、性能高）<br>对于WBWA Cache而言，如果读缺失和之前还未处理完的写缺失请求同一个主存块，则只需要等待写缺失处理完毕即可</p>
+<p>如何引发写回操作<br>发生Cache读缺失或写缺失（CPU请求的块X在Cache中没有找到）<br>从Cache中找到需要被替换的块V，这个块也称为victim block<br>如果块V是“脏”块，则将块V写回下一级存储<br>从下一级存储中取出块X，送入Cache<br>最终完成读或写操作同样，</p>
+<p>写回操作也可以不阻塞处理器的执行<br>块X和块V没有任何关系，只是块V需要给块X腾出Cache中空间<br>只需将块V送入一个临时缓冲区，即写回缓存（writeback buffer）</p>
+<p><strong>非阻塞Cache</strong><br>顺序执行处理器（In-order CPU）<br>乱序执行处理器（Out-of-order CPU）</p>
+<p>非阻塞Cache<br>也称为免锁Cache（lock-free cache），不必等待之前的Cache缺失完成<br>非阻塞Cache允许同时为多个并发Miss服务，已被主流处理器广泛采用<br>写缺失和写回都由写缓存处理，因此，我们只考虑读缺失<br>使用一个缺失状态保存寄存器（miss status holding register，MSHR）来保存缺失的相关信息</p>
+<p>缺失状态保存寄存器（MSHR）<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 20.53.46.png" alt="截屏2024-12-08 20.53.46" style="zoom:33%;"><br>B：标明该MSHR是否已经被分配。如果没有空闲的MSHR，则处理器阻塞，等待MSHR释放<br>Line addr：标明该MSHR对应的缺失的Cache行<br>Dest. reg.：标明读操作的目标寄存器<br>Format：标明读操作的类型，如字节、半字、字</p>
+<h5 id="降低命中时间"><a href="#降低命中时间" class="headerlink" title="降低命中时间"></a>降低命中时间</h5><p><strong>简洁的L1 Cache</strong><br>Cache命中过程的关键路径由3部分构成：<br>使用访存地址的索引部分寻址tag存储器<br>将读取的tag值和访存地址中的标签值进行比较<br>选择正确的数据项<br>提高时钟频率和降低功耗限制了现代处理器中L1 Cache容量的增加，也限制了相联度的增加<br>直接映射的命中时间略快于两路组相联，两路组相联比四路快1.2倍，四路组相联比八路快1.4倍（这些估计值将受工艺及缓存大小影响）</p>
+<p><strong>路预测</strong><br>Cache中的每个块都添加额外块预测位，用于预测下一次Cache访问的块：预测方法可参考分支预测<br>如果确实命中，则只需要一次tag比较，并且可以与数据传输并行<br>如果发生缺失，则检查其他块，以找到匹配的块，并改变块预测器<br>对于两路组相联，预测准确度超过90%；对于四路组相联，预测准确度超过80%；对于I-Cache的准确度优于D-Cache</p>
+<p><strong>流水线Cache</strong><br>实现Cache访问的流水化，将L1 Cache的命中延迟划分为多个时钟周期<br>Pentium: 1 cycle<br>Pentium Pro – Pentium III: 2 cycles<br>Pentium 4 – Core i7: 4 cycles<br>增加了流水段的段数；增加了分支预测发生错误的代价<br>但有利于采用高相联度的Cache</p>
+<img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 20.56.36.png" alt="截屏2024-12-08 20.56.36" style="zoom:50%;">
+
+<h4 id="Cache控制器的实现"><a href="#Cache控制器的实现" class="headerlink" title="Cache控制器的实现"></a>Cache控制器的实现</h4><p>![截屏2024-12-08 20.57.19](&#x2F;Users&#x2F;fanbowei&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;截屏2024-12-08 20.57.19.png)</p>
+<h3 id="虚拟存储器"><a href="#虚拟存储器" class="headerlink" title="虚拟存储器"></a>虚拟存储器</h3><h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><p>![截屏2024-12-08 20.58.46](&#x2F;Users&#x2F;fanbowei&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;截屏2024-12-08 20.58.46.png)</p>
+<h4 id="虚拟存储器的管理"><a href="#虚拟存储器的管理" class="headerlink" title="虚拟存储器的管理"></a>虚拟存储器的管理</h4><p>页大小应该是多少？虚页和实页之间如何映射？<br>页大小一般为2～64KB，比Cache中的行大得多，采用全相联映射（为什么？）<br>    上百万个时钟周期才能完成一次传输（扇区为传输单位），全相联提高命中率，缺页太大代价。<br>如果要找的页不在主存，如何处理？<br>硬件触发缺页异常，由操作系统内核的缺页异常处理程序将缺失页从磁盘调入主存，不同于Cache由纯硬件处理访问缺失（为什么？）<br>    缺页过于漫长，访问硬盘很复杂，不可能依靠硬件直接完成<br>对于写操作，如何保证主存和硬盘的一致性？<br>采用写回策略（为什么？）<br>虚拟地址和物理地址如何转换？<br>专用硬件（主存管理单元，MMU），基于页表查询<br>页表如何实现？页表项中应该记录哪些信息？如何加快页表查询速度？</p>
+<p>页表由一组页表项（page table entries, PTEs）构成，实现将虚拟页映射为物理页<br>位于主存之中，与程序计数器以及通用寄存器一起，用于描述一个进程的状态<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 21.01.18.png" alt="截屏2024-12-08 21.01.18" style="zoom: 50%;"></p>
+<p><em><strong>假设访存地址32位，页大小为4KB，每个PTE占4字节</strong></em><br><em><strong>问题1：一共有多少个PTE？</strong></em><br><em><strong>虚拟地址空间 &#x2F; 页大小 &#x3D; 232B &#x2F; 4KB &#x3D; 1M (PTEs)</strong></em><br><em><strong>问题2：每个进程的页表容量是多少？</strong></em><br><em><strong>1M个PTEs，每个PTE占4字节，故一个页表容量为4MB</strong></em></p>
+<p>基于页表的地址翻译<br><img src="/Users/fanbowei/Library/Application Support/typora-user-images/截屏2024-12-08 21.02.29.png" alt="截屏2024-12-08 21.02.29" style="zoom:50%;"></p>
+<h4 id="Cache寻址方式（考虑虚拟存储器）"><a href="#Cache寻址方式（考虑虚拟存储器）" class="headerlink" title="Cache寻址方式（考虑虚拟存储器）"></a>Cache寻址方式（考虑虚拟存储器）</h4><h3 id="其它存储器"><a href="#其它存储器" class="headerlink" title="其它存储器"></a>其它存储器</h3>
+      </section>
+
+      
+      
+        <nav class="article-nav">
+          
+          
+            <div class="article-nav-item layout-padding">
+  <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
+    
+    <div class="card-text">
+      
+        <a href="/2023/11/02/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E5%AE%9E%E9%AA%8C-01%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">01背包问题求解</h2>
+        </a>
+      
+      <div class="card-text--row">Older</div>
+    </div>
+  </article>
+</div>
+          
+        </nav>
+      
+
+      <section class="page-message-container layout-padding">
+        
+
+
+  
+  
+
+  
+  
+
+
+      </section>
+    </div>
+    <div class="widget-info">
+      <section class="widget-author widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-body">
+    
+      <img src="https://s.gravatar.com/avatar/2d6b803eea37de0257620d5fabee7e64?s=200&amp;r=g&amp;d=retro" class="soft-size--round soft-style--box" alt="Fox">
+    
+    
+      <h2>Fox</h2>
+    
+    
+      <p>贵在坚持</p>
+    
+
+    <div class="count-box">
+      <div class="count-box--item">
+        <svg class="icon icon-article" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M240.51564747 647.74217627h196.07203239c16.59071043 0 30.16492806-13.57421762 30.16492805-30.16492806V165.10332731c0-33.18142087-30.16492806-60.32985613-60.32985612-60.32985611H245.04038668C225.43318342 104.7734712 210.35071939 119.85593522 210.35071939 139.46313845V617.57724821c0 16.59071043 13.57421762 30.16492806 30.16492808 30.16492806z m663.62841731-452.47392089v482.63884894c0 33.18142087-27.14843525 60.32985613-60.32985612 60.32985613H180.18579134c-33.18142087 0-60.32985613-27.14843525-60.32985612-60.32985613V195.26825538c-49.77213131 0-90.49478418 40.72265287-90.49478417 90.49478417v452.4739209c0 49.77213131 40.72265287 90.49478418 90.49478417 90.49478417h286.56681657c16.59071043 0 30.16492806 13.57421762 30.16492807 30.16492807s13.57421762 30.16492806 30.16492805 30.16492806h90.49478418c16.59071043 0 30.16492806-13.57421762 30.16492805-30.16492806s13.57421762-30.16492806 30.16492807-30.16492807h286.56681657c49.77213131 0 90.49478418-40.72265287 90.49478417-90.49478417V285.76303955c0-49.77213131-40.72265287-90.49478418-90.49478417-90.49478417zM587.41232014 647.74217627h191.54729318c19.60720323 0 34.68966726-15.08246403 34.68966729-34.68966727V134.93839925c0-16.59071043-13.57421762-30.16492806-30.16492808-30.16492805H617.57724821c-30.16492806 0-60.32985613 27.14843525-60.32985612 60.32985611v452.4739209c0 16.59071043 13.57421762 30.16492806 30.16492805 30.16492806z" fill="currentColor"></path>
+</svg>
+        <span>4</span>
+      </div>
+      <div class="count-box--item">
+        <svg class="icon icon-categories" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M900.3614811 257.09082106h-339.81629553l-67.96326003-101.9448889c-19.41807444-29.12711113-48.54518557-43.69066667-82.52681443-43.69066667H123.6385189c-53.39970333 0-97.09036999 43.69066667-97.09037113 97.09036999v582.54222222c0 53.39970333 43.69066667 97.09036999 97.09037113 97.09037002h776.7229622c53.39970333 0 97.09036999-43.69066667 97.09037113-97.09037002V354.18119104c0-53.39970333-43.69066667-97.09036999-97.09037113-97.09036998z m-97.09036999 242.72592554H220.72888889c-24.27259221 0-48.54518557-24.27259221-48.54518556-48.54518556s24.27259221-48.54518557 48.54518556-48.54518444h582.54222222c24.27259221 0 48.54518557 24.27259221 48.54518556 48.54518444s-24.27259221 48.54518557-48.54518556 48.54518556z" fill="currentColor"></path>
+</svg>
+        0
+      </div>
+      <div class="count-box--item">
+        <svg class="icon icon-tags" viewBox="0 0 1098 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M283.42180005 272q0-28.38857157-20.09142843-48.48000001t-48.47999998-20.09142842-48.48000002 20.09142842-20.09142846 48.48000001 20.09142846 48.48 48.48000002 20.09142843 48.47999998-20.09142843 20.09142843-48.48zM855.0332285 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.03999997 263.58857157q-20.9142853 19.81714313-48.75428534 19.81714312-28.38857157 0-48.20571468-19.81714312l-383.04-383.58857157q-20.36571468-19.81714313-34.55999999-54.10285688t-14.19428534-62.6742853l0-222.85714313q0-27.84000002 20.36571469-48.20571469t48.2057147-20.36571466l222.85714313 0q28.38857157 0 62.6742853 14.19428529t54.65142842 34.55999999l383.04000001 382.49142843q19.81714313 20.9142853 19.81714314 48.75428532zM1060.74751475 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.04 263.58857157q-20.9142853 19.81714313-48.75428531 19.81714312-19.26857155 0-31.61142843-7.47428531t-28.38857159-24.13714314l251.79428534-251.7942853q19.81714313-19.81714313 19.81714308-48.20571469 0-27.84000002-19.81714308-48.75428531l-383.04000001-382.49142845q-20.36571468-20.36571468-54.65142842-34.55999999t-62.67428532-14.19428534l120 0q28.38857157 0 62.67428532 14.19428534t54.65142842 34.55999999l383.03999998 382.49142845q19.81714313 20.9142853 19.81714314 48.75428531z" fill="currentColor"></path>
+</svg>
+        1
+      </div>
+    </div>
+  </div>
+</section>
+
+      
+
+      
+<section class="widet-notice widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-title">
+    <svg class="icon icon-notice" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M512 945.02305225v28.15620663a24.27259221 24.27259221 0 0 1-24.27259221 24.27259335H394.0352a48.54518557 48.54518557 0 0 1-41.74885888-23.78714112l-110.68302222-184.47170332a132.04290333 132.04290333 0 0 1-17.47626667-48.54518557h118.4502511a200.97706667 200.97706667 0 0 1 76.21594113 14.56355556l20.38897777 133.49925888a48.54518557 48.54518557 0 0 0 36.40888888 27.67075555l16.01991111 2.91271112a24.27259221 24.27259221 0 0 1 20.38897778 25.72894889zM997.45185223 463.45481443a194.18074112 194.18074112 0 0 1-38.8361489 116.50844445 24.75804445 24.75804445 0 0 1-36.4088889 0l-34.95253333-34.95253333a24.27259221 24.27259221 0 0 1-2.91271111-30.58346667 97.09036999 97.09036999 0 0 0 0-106.79940665 24.27259221 24.27259221 0 0 1 2.91271111-30.58346666l34.95253333-34.95253334a24.75804445 24.75804445 0 0 1 18.93262223-7.28177777 26.2144 26.2144 0 0 1 17.47626667 9.70903665A194.18074112 194.18074112 0 0 1 997.45185223 463.45481443z m-194.18074112-388.36148111v776.72296335a48.54518557 48.54518557 0 0 1-48.54518556 48.54518443h-28.64165888a48.54518557 48.54518557 0 0 1-33.98163001-14.07810332l-145.63555556-143.20829668A291.27111111 291.27111111 0 0 0 342.57730333 657.63555556H172.18370333a145.63555556 145.63555556 0 0 1-145.63555556-145.63555556v-97.09036999a145.63555556 145.63555556 0 0 1 145.63555556-145.63555556h170.3936a291.27111111 291.27111111 0 0 0 206.31703779-85.43952668l145.63555555-143.20829554a48.54518557 48.54518557 0 0 1 33.98162888-14.07810446H754.72592555a48.54518557 48.54518557 0 0 1 48.54518556 48.54518555z" fill="currentColor"></path>
+</svg>
+    <span>NOTICE</span>
+  </div>
+  <div class="widget-body">
+    <p>flex-block主题部分重构，详情查看https://github.com/miiiku/flex-block</p>
+  </div>
+</section>
+
+
+      <section class="widget-categorys widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-title">
+    <svg class="icon icon-categories" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M900.3614811 257.09082106h-339.81629553l-67.96326003-101.9448889c-19.41807444-29.12711113-48.54518557-43.69066667-82.52681443-43.69066667H123.6385189c-53.39970333 0-97.09036999 43.69066667-97.09037113 97.09036999v582.54222222c0 53.39970333 43.69066667 97.09036999 97.09037113 97.09037002h776.7229622c53.39970333 0 97.09036999-43.69066667 97.09037113-97.09037002V354.18119104c0-53.39970333-43.69066667-97.09036999-97.09037113-97.09036998z m-97.09036999 242.72592554H220.72888889c-24.27259221 0-48.54518557-24.27259221-48.54518556-48.54518556s24.27259221-48.54518557 48.54518556-48.54518444h582.54222222c24.27259221 0 48.54518557 24.27259221 48.54518556 48.54518444s-24.27259221 48.54518557-48.54518556 48.54518556z" fill="currentColor"></path>
+</svg>
+    <span>CATEGORYS</span>
+  </div>
+  <div class="widget-body">
+    <ul class="categorys-list">
+      
+    </ul>
+  </div>
+</section>
+
+      <section class="widget-tags widget-item  layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-title">
+    <svg class="icon icon-tags" viewBox="0 0 1098 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M283.42180005 272q0-28.38857157-20.09142843-48.48000001t-48.47999998-20.09142842-48.48000002 20.09142842-20.09142846 48.48000001 20.09142846 48.48 48.48000002 20.09142843 48.47999998-20.09142843 20.09142843-48.48zM855.0332285 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.03999997 263.58857157q-20.9142853 19.81714313-48.75428534 19.81714312-28.38857157 0-48.20571468-19.81714312l-383.04-383.58857157q-20.36571468-19.81714313-34.55999999-54.10285688t-14.19428534-62.6742853l0-222.85714313q0-27.84000002 20.36571469-48.20571469t48.2057147-20.36571466l222.85714313 0q28.38857157 0 62.6742853 14.19428529t54.65142842 34.55999999l383.04000001 382.49142843q19.81714313 20.9142853 19.81714314 48.75428532zM1060.74751475 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.04 263.58857157q-20.9142853 19.81714313-48.75428531 19.81714312-19.26857155 0-31.61142843-7.47428531t-28.38857159-24.13714314l251.79428534-251.7942853q19.81714313-19.81714313 19.81714308-48.20571469 0-27.84000002-19.81714308-48.75428531l-383.04000001-382.49142845q-20.36571468-20.36571468-54.65142842-34.55999999t-62.67428532-14.19428534l120 0q28.38857157 0 62.67428532 14.19428534t54.65142842 34.55999999l383.03999998 382.49142845q19.81714313 20.9142853 19.81714314 48.75428531z" fill="currentColor"></path>
+</svg>
+    <span>TAGS</span>
+  </div>
+  <div class="widget-body">
+    <div class="tags-cloud">
+      <a href="/tags/%E8%AE%A1%E7%A7%9F/" style="font-size: 10px;" class="tags-cloud-0">计租</a>
+    </div>
+  </div>
+</section>
+    </div>
+  </article>
+</div>
+
+    <!-- footer container -->
+<footer id="footer" class="footer">
+  <div class="footer-container">
+    
+    <div class="social-icons">
+      
+        
+      
+        
+          <a href="https://www.zhihu.com/people/fox-79-30" class="soft-size--primary soft-style--box" target="_blank" rel="noopener noreferrer">
+            <svg t="1587373160860" class="icon icon-zhihu" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M544.949 561.422s0-71.387-34.779-75.050c-34.779-3.663-142.775 0-142.775 0v-219.654h161.078s-1.83-73.219-32.949-73.219h-261.755l43.93-117.148s-65.897 3.663-89.692 45.761-98.844 252.604-98.844 252.604 25.627 10.983 67.726-20.134c42.101-31.116 56.743-86.033 56.743-86.033l76.879-3.663 1.83 223.316s-133.621-1.83-161.078 0c-27.457 1.83-42.101 75.050-42.101 75.050h203.182s-18.307 124.47-69.557 214.164c-53.085 89.692-151.929 161.078-151.929 161.078s71.387 29.287 140.947-10.983c69.557-42.101 120.811-223.316 120.811-223.316l162.912 203.182s14.643-97.013-1.83-124.47c-18.307-27.457-113.49-137.283-113.49-137.283l-42.101 36.607 29.287-120.811h177.552zM587.050 188.010l-1.83 660.793h65.897l23.795 82.37 115.321-82.37h162.912v-660.793h-366.091zM879.92 775.584h-76.879l-97.013 75.050-21.965-75.050h-20.134v-512.527h215.991v512.527z"></path>
+</svg>
+          </a>
+        
+      
+        
+          <a href="https://space.bilibili.com/297979317" class="soft-size--primary soft-style--box" target="_blank" rel="noopener noreferrer">
+            <svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+    <g>
+        <path fill="none" d="M0 0h24v24H0z"/>
+        <path d="M18.223 3.086a1.25 1.25 0 0 1 0 1.768L17.08 5.996h1.17A3.75 3.75 0 0 1 22 9.747v7.5a3.75 3.75 0 0 1-3.75 3.75H5.75A3.75 3.75 0 0 1 2 17.247v-7.5a3.75 3.75 0 0 1 3.75-3.75h1.166L5.775 4.855a1.25 1.25 0 1 1 1.767-1.768l2.652 2.652c.079.079.145.165.198.257h3.213c.053-.092.12-.18.199-.258l2.651-2.652a1.25 1.25 0 0 1 1.768 0zm.027 5.42H5.75a1.25 1.25 0 0 0-1.247 1.157l-.003.094v7.5c0 .659.51 1.199 1.157 1.246l.093.004h12.5a1.25 1.25 0 0 0 1.247-1.157l.003-.093v-7.5c0-.69-.56-1.25-1.25-1.25zm-10 2.5c.69 0 1.25.56 1.25 1.25v1.25a1.25 1.25 0 1 1-2.5 0v-1.25c0-.69.56-1.25 1.25-1.25zm7.5 0c.69 0 1.25.56 1.25 1.25v1.25a1.25 1.25 0 1 1-2.5 0v-1.25c0-.69.56-1.25 1.25-1.25z"/>
+    </g>
+</svg>
+
+          </a>
+        
+      
+        
+          <a href="https://github.com/fbw115" class="soft-size--primary soft-style--box" target="_blank" rel="noopener noreferrer">
+            <svg class="icon icon-github" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M64.6 512c0 195.6 125.4 361.9 300.1 422.9 23.5 5.9 19.9-10.8 19.9-22.2v-77.6c-135.8 15.9-141.3-74-150.5-89-18.5-31.5-61.9-39.5-49-54.5 31-15.9 62.5 4 98.9 58 26.4 39.1 77.9 32.5 104.1 26 5.7-23.5 17.9-44.5 34.7-60.9-140.7-25.2-199.4-111.1-199.4-213.3 0-49.5 16.4-95.1 48.4-131.8-20.4-60.6 1.9-112.4 4.9-120.1 58.2-5.2 118.5 41.6 123.3 45.3 33.1-8.9 70.8-13.7 112.9-13.7 42.4 0 80.3 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.4-43.9 2.9 7.7 24.7 58.3 5.5 118.1 32.5 36.8 49 82.8 49 132.4 0 102.3-59 188.3-200.2 213.2 23.5 23.3 38.1 55.5 38.1 91.1v112.7c0.8 9 0 17.9 15.1 17.9C832.7 877 960.4 709.4 960.4 512.1c0-247.5-200.6-447.9-447.9-447.9C265 64.1 64.6 264.5 64.6 512z"></path>
+</svg>
+          </a>
+        
+      
+        
+      
+        
+      
+    </div>
+     
+    <p>&copy; 2025 <a href="/" target="_blank">Fox</a></p>
+
+    
+
+    <p>Powered by <a href="https://hexo.io" target="_blank" rel="noopener noreferrer">Hexo</a> Theme - <a href="https://github.com/miiiku/flex-block" target="_blank" rel="noopener noreferrer author">flex-block</a></p>
+
+    <p>
+      <a href="javascript:;" id="theme-light">🌞 浅色</a>
+      <a href="javascript:;" id="theme-dark">🌛 深色</a>
+      <a href="javascript:;" id="theme-auto">🤖️ 自动</a>
+    </p>
+  </div>
+</footer>
+  </div>
+
+  <div class="back-to-top-fixed soft-size--round soft-style--box">
+    <svg class="icon icon-back-to-top" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <path d="M725.333333 426.666667c-12.8 0-21.333333-4.266667-29.866667-12.8l-213.333333-213.333333c-17.066667-17.066667-17.066667-42.666667 0-59.733333s42.666667-17.066667 59.733333 0l213.333333 213.333333c17.066667 17.066667 17.066667 42.666667 0 59.733333C746.666667 422.4 738.133333 426.666667 725.333333 426.666667z"></path>
+      <path d="M298.666667 426.666667c-12.8 0-21.333333-4.266667-29.866667-12.8-17.066667-17.066667-17.066667-42.666667 0-59.733333l213.333333-213.333333c17.066667-17.066667 42.666667-17.066667 59.733333 0s17.066667 42.666667 0 59.733333l-213.333333 213.333333C320 422.4 311.466667 426.666667 298.666667 426.666667z"></path>
+      <path d="M512 896c-25.6 0-42.666667-17.066667-42.666667-42.666667L469.333333 170.666667c0-25.6 17.066667-42.666667 42.666667-42.666667s42.666667 17.066667 42.666667 42.666667l0 682.666667C554.666667 878.933333 537.6 896 512 896z"></path>
+    </svg>
+  </div>
+
+  
+  <!-- aplayer -->
+
+
+<!-- dplayer -->
+
+
+<!-- copy button  -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script>
+
+<!-- https://clipboardjs.com/ -->
+
+
+<script type="text/javascript">
+	(function () {
+		function getCodeType (elem) {
+			const classs = Array.from(elem.classList.values());
+			if (classs && classs.length > 1) {
+				return classs[1];
+			}
+			return "plain";
+		}
+
+		window.addEventListener("DOMContentLoaded", () => {
+			const copyBtnClass = "copy-btn";
+			//  instantiate clipboardjs 
+			const clipboard = new ClipboardJS('.' + copyBtnClass);
+
+			clipboard.on('success', function (e) {
+				console.info('Action:', e.action);
+				console.info('Text:', e.text);
+				console.info('Trigger:', e.trigger);
+				if (e.trigger) {
+					e.trigger.classList.add("copied");
+					setTimeout(() => {
+						e.trigger.classList.remove("copied");
+					}, 3000);
+				}
+				e.clearSelection();
+			});
+
+			clipboard.on('error', function (e) {
+				console.error('Action:', e.action);
+				console.error('Trigger:', e.trigger);
+			});
+
+			document.querySelectorAll('figure.highlight').forEach((elem) => {
+				const codeContent = elem.querySelector("td.code");
+				const copyButton = document.createElement('button');
+				copyButton.setAttribute("class", copyBtnClass);
+				copyButton.setAttribute("title", "Copy Code");
+				copyButton.setAttribute("data-clipboard-text", codeContent.innerText);
+				elem.insertBefore(copyButton, elem.children[0]);
+			});
+		})
+	})();
+</script>
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+  
+  <!-- 尾部用户自定义相关内容 -->
+</body>
+</html>
